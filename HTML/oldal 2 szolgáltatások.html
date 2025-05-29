@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Szolgáltatások</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ebdbc9;
+      margin: 0;
+    }
+    .navbar {
+      align-items: end; /* Igazítja az egész nav tartalmát alulra */
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between; /* A logó balra, nav jobbra */
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 2rem; /* nagyobb távolság az itemek között */
+    }
+
+    .hero-section {
+      background-image: url('tartan_custom.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .hero-overlay {
+      background-color: rgba(179, 172, 172, 0.719);
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #006a51;
+    }
+
+    .hero-title {
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 2rem;
+    }
+
+    .service-button {
+      background-color: #ebdbc9;
+      color: #006a51;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin: 1rem 0; /* több hely a gombok között */
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .footer {
+      background-color: #006a51;
+      color: white;
+      margin-top: 0; /* megszünteti az extra hézagot */
+    }
+
+    .footer-icons img {
+      filter: invert(1);
+      width: 30px;
+      height: 30px;
+    }
+
+    /* töröld az alap margin-t minden szekción */
+    section, footer {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+    <div class="container">
+      <a class="navbar-brand" href="">
+      <img src="logodudabalint3.png" alt="Kiss Bálint" height="70">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="főoldal1.html">Kezdőlap</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal 2 szolgáltatások.html">Szolgáltatások</a></li>
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section with Services -->
+<section class="hero-section position-relative text-white">
+  <!--<div class="hero-overlay"></div>-->
+  <div class="hero-content text-center">
+    <h1 class="hero-title">Szolgáltatások</h1>
+    <div class="d-flex flex-column align-items-center gap-3">
+      <a href="booking.html?type=szulinap" class="service-button text-decoration-none text-reset text-center">Szülinap</a>
+      <a href="booking.html?type=eskuvo" class="service-button text-decoration-none text-reset text-center">Esküvő</a>
+      <a href="booking.html?type=temetes" class="service-button text-decoration-none text-reset text-center">Temetés</a>
+      <a href="booking.html?type=egyeni" class="service-button text-decoration-none text-reset text-center">Egyéni megbízás</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer py-4">
+  <div class="container text-center">
+    <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+    <small>Kapcsolat | Szolgáltatás</small>
+    <div class="footer-icons mt-2 d-flex justify-content-center gap-3">
+      <img src="icons8-instagram-24.svg" alt="Instagram">
+      <img src="icons8-facebook-60.svg" alt="Facebook">
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

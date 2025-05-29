@@ -1,0 +1,13 @@
+{
+  "name": "functions",
+  "description": "Firebase Cloud Functions",
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^6.3.2",
+    "nodemailer": "^6.9.8"
+  }
+}

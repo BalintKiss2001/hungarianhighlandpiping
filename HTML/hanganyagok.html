@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanganyagok</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      align-items: end;
+      /* Igazítja az egész nav tartalmát alulra */
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      /* A logó balra, nav jobbra */
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 2rem;
+      /* nagyobb távolság az itemek között */
+    }
+
+    body {
+      font-family: 'Poppins', serif;
+      background-color: #ebdbc9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .audio-section {
+      padding: 4rem 1rem;
+      background-color: #ebdbc9;
+    }
+
+    .audio-item {
+      background-image: url('tartan_custom.png');
+      /* vagy .png, ha az a helyes */
+      background-size: cover;
+      background-position: center;
+      color: #ebdbc9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .audio-item h5 {
+      margin-bottom: 1rem;
+      color: #ebdbc9;
+    }
+
+    .audio-title {
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #006a51;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+
+
+
+    audio {
+      width: 100%;
+      outline: none;
+    }
+
+    .footer {
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
+      background-color: #006a51;
+      color: white;
+    }
+
+    .footer-icons img {
+      filter: invert(1);
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img src="logodudabalint3.png" alt="Kiss Bálint" class="logo" style="height: 70px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="főoldal1.html">Kezdőlap</a></li>
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hanganyagok -->
+  <main>
+    <section class="audio-section container">
+      <h1 class="audio-title">Hanganyagok</h1>
+
+      <div class="audio-item">
+        <h5>Kiss Bálint – Drumbuie(Slow Air, written by Fred Morrisson)</h5>
+        <audio controls>
+          <source src="audio/drumbuie.wav" type="audio/wav">
+          A böngésződ nem támogatja a hanglejátszást.
+        </audio>
+      </div>
+
+      <div class="audio-item">
+        <h5>Kiss Bálint – MacNeills of Ugadale(4/4 March, P/M J. M. MacKenzie)</h5>
+        <audio controls>
+          <source src="audio/mnoub.wav" type="audio/wav">
+          A böngésződ nem támogatja a hanglejátszást.
+        </audio>
+      </div>
+
+      <div class="audio-item">
+        <h5>Kiss Bálint – Rowan Tree (4/4, trad.)</h5>
+        <audio controls>
+          <source src="audio/rowan_tree.wav" type="audio/wav">
+          A böngésződ nem támogatja a hanglejátszást.
+        </audio>
+      </div>
+
+      <div class="audio-item">
+        <h5>Kiss Bálint – Amazing Grace (3/4 Hymn, trad setting)</h5>
+        <audio controls>
+          <source src="audio/amazing_grace.wav" type="audio/wav">
+          A böngésződ nem támogatja a hanglejátszást.
+        </audio>
+      </div>
+
+      <!-- További fájlok ugyanígy hozzáadhatók -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer py-4 mt-5">
+    <div class="container-fluid text-center">
+      <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+      <!--<small>Kapcsolat | Szolgáltatás</small>-->
+      <div class="footer-icons mt-2 d-flex justify-content-center gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61576771014395" target="_blank">
+          <img src="icons8-facebook-60.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

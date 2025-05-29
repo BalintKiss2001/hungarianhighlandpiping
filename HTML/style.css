@@ -1,0 +1,743 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', serif;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.oldal-kapcsolat {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.oldal-kapcsolat .div {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1920px;
+  height: 1193px;
+  position: relative;
+}
+
+.oldal-kapcsolat .overlap-group {
+  position: absolute;
+  width: 2004px;
+  height: 1127px;
+  top: 0;
+  left: -42px;
+  background-color: #ebdbc9;
+}
+
+.oldal-kapcsolat .navbar {
+  position: absolute;
+  width: 1920px;
+  height: 67px;
+  top: 0;
+  left: 42px;
+  background-color: #006a51ba;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.oldal-kapcsolat .text-wrapper {
+  top: 20px;
+  left: 1407px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .text-wrapper-2 {
+  top: 20px;
+  left: 446px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .text-wrapper-3 {
+  top: 20px;
+  left: 744px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .text-wrapper-4 {
+  top: 20px;
+  left: 1101px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .text-wrapper-5 {
+  top: 19px;
+  left: 1879px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .text-wrapper-6 {
+ position: absolute;
+  width: 499px;
+  top: 158px;
+  left: 754px;
+  font-family: 'IM Fell DW Pica SC', serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 80px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .overlap {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 317px;
+  left: 849px;
+  background-color: #006a51;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-kapcsolat .text-wrapper-7 {
+  position: absolute;
+  top: 22px;
+  left: 106px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .div-wrapper {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 472px;
+  left: 845px;
+  background-color: #006a51;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-kapcsolat .text-wrapper-8 {
+  position: absolute;
+  top: 22px;
+  left: 85px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .overlap-2 {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 627px;
+  left: 845px;
+  background-color: #006a51;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-kapcsolat .text-wrapper-9 {
+  position: absolute;
+  top: 22px;
+  left: 63px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-kapcsolat .group {
+  position: absolute;
+  width: 1920px;
+  height: 66px;
+  top: 1127px;
+  left: 0;
+}
+.oldal-szolgltatsok {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.oldal-szolgltatsok .div {
+  background-color: #ffffff;
+  width: 1920px;
+  height: 1193px;
+  position: relative;
+}
+
+.oldal-szolgltatsok .overlap-group {
+  position: absolute;
+  width: 1920px;
+  height: 1127px;
+  top: 0;
+  left: 0;
+  background-image: url(./img/493521373-9717633331615942-3221487845380259568-n-1.png);
+  background-size: 100% 100%;
+}
+
+.oldal-szolgltatsok .navbar {
+  position: absolute;
+  width: 1920px;
+  height: 67px;
+  top: 0;
+  left: 0;
+  background-color: #006a51ba;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.oldal-szolgltatsok .text-wrapper {
+  top: 20px;
+  left: 1407px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .text-wrapper-2 {
+  top: 20px;
+  left: 446px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .text-wrapper-3 {
+  top: 20px;
+  left: 744px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .text-wrapper-4 {
+  top: 20px;
+  left: 1101px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .text-wrapper-5 {
+  top: 19px;
+  left: 1879px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .text-wrapper-6 {
+  position: absolute;
+  width: 761px;
+  top: 163px;
+  left: 579px;
+  font-family: "IM Fell DW Pica SC", serif;
+  font-weight: 400;
+  color: #ebdbc9;
+  font-size: 80px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .overlap {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 317px;
+  left: 805px;
+  background-color: #ebdbc9;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-szolgltatsok .text-wrapper-7 {
+  position: absolute;
+  top: 26px;
+  left: 102px;
+  font-family: "IM FELL DW Pica SC", serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .div-wrapper {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 511px;
+  left: 805px;
+  background-color: #ebdbc9;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-szolgltatsok .text-wrapper-8 {
+  position: absolute;
+  top: 27px;
+  left: 109px;
+  font-family: "IM FELL DW Pica SC", serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .overlap-2 {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 706px;
+  left: 805px;
+  background-color: #ebdbc9;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-szolgltatsok .text-wrapper-9 {
+  position: absolute;
+  top: 26px;
+  left: 101px;
+  font-family: "IM FELL DW Pica SC", serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .overlap-3 {
+  position: absolute;
+  width: 310px;
+  height: 92px;
+  top: 901px;
+  left: 807px;
+  background-color: #ebdbc9;
+  border-radius: 22px;
+  box-shadow: 0px 7px 10px 1px #00000040;
+}
+
+.oldal-szolgltatsok .text-wrapper-10 {
+  position: absolute;
+  top: 27px;
+  left: 54px;
+  font-family: "IM Fell DW Pica SC", serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.oldal-szolgltatsok .group {
+  position: absolute;
+  width: 1920px;
+  height: 66px;
+  top: 1127px;
+  left: 0;
+}
+
+.foldal {
+  background-color: #ebdbc9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.foldal .div {
+  background-color: #ebdbc9;
+  overflow: hidden;
+  width: 1920px;
+  height: 2248px;
+  position: relative;
+}
+
+.foldal .overlap-group {
+  position: absolute;
+  width: 1920px;
+  height: 1125px;
+  top: 0;
+  left: 0;
+  background-image: url(./img/493521373-9717633331615942-3221487845380259568-n-1.png);
+  background-size: 100% 100%;
+}
+
+.foldal .navbar {
+  position: absolute;
+  width: 1920px;
+  height: 67px;
+  top: 0;
+  left: 0;
+  background-color: #006a51ba;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.text-wrapper {
+  top: 20px;
+  left: 1407px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-2 {
+  top: 20px;
+  left: 446px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-3 {
+  top: 20px;
+  left: 744px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-4 {
+  top: 20px;
+  left: 1101px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-5 {
+  top: 19px;
+  left: 1879px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .KISS-b-LINT-SK-TDUD {
+position: absolute;
+  width: 641px;
+  top: 278px;
+  left: 162px;
+  font-family: 'IM Fell DW Pica SC', serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 80px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .overlap {
+  position: absolute;
+  width: 208px;
+  height: 76px;
+  top: 547px;
+  left: 162px;
+  background-color: #006a51;
+  border-radius: 15px;
+  box-shadow: 0px 7px 4px 1px #00000040;
+}
+
+.overlap .text-wrapper-6 {
+  top: 14px;
+  left: 27px;
+  font-size: 30px;
+  position: absolute;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .rectangle {
+  position: absolute;
+  width: 362px;
+  height: 393px;
+  top: 1291px;
+  left: 162px;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  box-shadow: 7px 6px 13px -1px #00000040;
+}
+
+.foldal .kiss-b-lint-sk-t-dud {
+   position: absolute;
+  width: 976px;
+  top: 1290px;
+  left: 621px;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  text-align: justify;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .div-wrapper {
+  position: absolute;
+  width: 155px;
+  height: 52px;
+  top: 2049px;
+  left: 886px;
+  background-color: #006a51;
+  border-radius: 15px;
+  box-shadow: 0px 9px 10.7px 1px #00000040;
+}
+
+.foldal .text-wrapper-7 {
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-8 {
+  position: absolute;
+  top: 1240px;
+  left: 162px;
+  font-family: "IM FELL DW Pica SC", serif;
+  font-weight: 400;
+  color: #006a51;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .overlap-2 {
+  position: absolute;
+  width: 1928px;
+  height: 68px;
+  top: 2182px;
+  left: 0;
+}
+
+.foldal .rectangle-2 {
+  position: absolute;
+  width: 1920px;
+  height: 66px;
+  top: 0;
+  left: 0;
+  background-color: #006a51;
+  box-shadow: inset 0px 4px 4px #00000040;
+}
+
+.foldal .text-wrapper-9 {
+  position: absolute;
+  width: 192px;
+  top: 26px;
+  left: 1736px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-10 {
+  top: 26px;
+  left: 1564px;
+  font-size: 12px;
+  position: absolute;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .text-wrapper-11 {
+  position: absolute;
+  top: 26px;
+  left: 1376px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.foldal .vector {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 17px;
+  left: 68px;
+}
+
+.foldal .img {
+  position: absolute;
+  width: 36px;
+  height: 34px;
+  top: 18px;
+  left: 13px;
+}
+
+.box{
+  width: 362px;
+  height: 393px;
+}
+
+.bottom-box .bottom-rectangle{
+   position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 66px;
+  background-color: #006a51;
+  box-shadow: inset 0px 4px 4px #00000040;
+}
+
+.instagram-icon {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: 17px;
+  left: 68px;
+  filter: invert(1);
+}
+
+.facebook-icon {
+  position: absolute;
+  width: 40px;
+  height: 38px;
+  top: 18px;
+  left: 13px;
+  filter: invert(1);
+}
+
+.mid-box{
+  width: 361px;
+  height: 393px;
+}
+.mid-box .rectangle{
+  position: absolute;
+  width: 362px;
+  height: 393px;
+  top: 162;
+  left: 1291;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  box-shadow: 7px 6px 13px -1px #00000040;
+}
+
+.bottom-rectangle {
+  background-color: #312f2f; /* vagy a kívánt háttérszín */
+  width: 100%;
+  height: 200px; /* vagy amennyi szükséges */
+}
+
+.overlap-2 {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.text-wrapper-9,
+.text-wrapper-10,
+.text-wrapper-11 {
+  color: #4CAF50; /* zöld betűszín */
+  position: absolute;
+  z-index: 2;
+}
+
+
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galéria</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="globals.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ebdbc9;
+      margin: 0;
+    }
+
+    .gallery-section {
+      padding: 4rem 1rem;
+    }
+
+    .gallery-title {
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #006a51;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-item {
+      margin-bottom: 2rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-caption {
+      padding: 1rem;
+      font-size: 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .footer {
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
+      background-color: #006a51;
+      color: white;
+    }
+
+    .footer-icons img {
+      filter: invert(1);
+      width: 30px;
+      height: 30px;
+    }
+
+    .navbar {
+      align-items: end;
+      /* Igazítja az egész nav tartalmát alulra */
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      /* A logó balra, nav jobbra */
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 2rem;
+      /* nagyobb távolság az itemek között */
+    }
+
+    .logo {
+      height: 70px;
+      /* vagy 40px, ha még kisebb kell */
+      width: auto;
+      /* hogy ne torzuljon az arány */
+    }
+
+    .gallery-item img {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img src="logodudabalint3.png" alt="Kiss Bálint" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="főoldal1.html">Kezdőlap</a></li>
+          <!--<li class="nav-item"><a class="nav-link" href="oldal 2 szolgáltatások.html">Szolgáltatások</a></li>-->
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Galéria -->
+  <section class="gallery-section container">
+    <h1 class="gallery-title">Galéria</h1>
+    <div class="row">
+
+      <!-- YouTube videó -->
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/8RBR9Tr32J0" title="pibroch1" allowfullscreen></iframe>
+          </div>
+          <div class="gallery-caption">Kiss Bálint - Lament For Mary MacLeod (Piobaireachd)</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/1j7p7gh_y2o" title="Kiss Bálint - Mély D Síp"
+              allowfullscreen></iframe>
+          </div>
+          <div class="gallery-caption">Kiss Bálint - Mély D Síp</div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/pICitYUk0aw" title="Kiss Bálint - Mély D Síp"
+              allowfullscreen></iframe>
+          </div>
+          <div class="gallery-caption">Kiss Bálint - Mély D Síp</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <a href="img/duda2022.jpg" class="glightbox" data-gallery="galeria"
+            data-title="Szakmai Elit gála - Németh fotó">
+            <img src="img/duda2022.jpg" alt="Szakmai Elit díjátadó" class="img-fluid">
+          </a>
+          <div class="gallery-caption">Szakmai Elit gála - Németh fotó</div>
+        </div>
+      </div>
+
+
+
+      <!-- Még egy kép -->
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <a href="img/szakmaielitdij.jpg" class="glightbox" data-gallery="galeria"
+            data-title="Szakmai Elit 2022 Év Fiatal tehetsége díj átvétele">
+            <img src="img/szakmaielitdij.jpg" alt="Szakmai Elit 2022 Év Fiatal tehetsége díj átvétele"
+              class="img-fluid">
+          </a>
+          <div class="gallery-caption">Szakmai Elit 2022 Év Fiatal tehetsége díj átvétele</div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-4 mt-5">
+    <div class="container-fluid text-center">
+      <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+      <!--<small>Kapcsolat | Szolgáltatás</small>-->
+      <div class="footer-icons mt-2 d-flex justify-content-center gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61576771014395" target="_blank">
+          <img src="icons8-facebook-60.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      openEffect: 'zoom',
+      closeEffect: 'fade',
+      plyr: {
+        css: 'https://cdn.plyr.io/3.6.2/plyr.css',
+        js: 'https://cdn.plyr.io/3.6.2/plyr.js'
+      }
+    });
+  </script>
+
+</body>
+
+</html>
