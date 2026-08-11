@@ -212,6 +212,54 @@
       text-decoration: underline;
     }
 
+    .faq-section {
+      padding: 3rem 1rem;
+    }
+
+    .faq-intro {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      color: #333333;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .faq-section .accordion {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-section .accordion-item {
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+    }
+
+    .faq-section .accordion-button {
+      font-weight: 600;
+      color: #006a51;
+      background-color: #ffffff;
+      box-shadow: none;
+    }
+
+    .faq-section .accordion-button:not(.collapsed) {
+      color: #ffffff;
+      background-color: #006a51;
+    }
+
+    .faq-section .accordion-button:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 106, 81, 0.18);
+    }
+
+    .faq-section .accordion-body {
+      line-height: 1.75;
+      color: #333333;
+      background-color: #ffffff;
+    }
+
     @media (max-width: 991px) {
       .home-blog-slider article {
         flex-basis: 50%;
@@ -388,6 +436,88 @@
 
     <div class="text-center mt-4">
       <a href="blog.html" class="btn btn-custom btn-lg shadow">Összes blogbejegyzés</a>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="container faq-section" id="gyik">
+    <h2 class="section-heading text-center mb-3">GYIK</h2>
+    <p class="faq-intro">
+      Gyakori kérdések fellépés, tanulás és hangszerhasználat előtt.
+    </p>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="faqHeadingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne"
+            aria-expanded="true" aria-controls="faqOne">
+            Mennyire hangos a skót duda?
+          </button>
+        </h3>
+        <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            A Great Highland Bagpipe kifejezetten erős hangú hangszer. Kültéren, bevonulásoknál,
+            ünnepi pillanatoknál és nagyobb terekben működik igazán természetesen. Hangereje nagyjából
+            110-120 decibel is lehet, ezért kisebb helyszínen fontos előre egyeztetni a tér méretét
+            és a program jellegét.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="faqHeadingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo"
+            aria-expanded="false" aria-controls="faqTwo">
+            Lehet beltéren játszani?
+          </button>
+        </h3>
+        <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Igen, de nem minden beltér ideális. Templom, aula, nagyobb terem vagy rendezvényhelyszín
+            esetén jól tud működni, viszont kis szobában vagy alacsony belmagasságú térben túl erős
+            lehet. Ilyenkor a pontos helyszín, a belépési pont és az időtartam egyeztetése különösen fontos.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="faqHeadingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree"
+            aria-expanded="false" aria-controls="faqThree">
+            Mennyi időre érdemes tervezni?
+          </button>
+        </h3>
+        <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Sok alkalomhoz 5-15 perc duda bőven elég: bevonulás, kivonulás, köszöntés vagy egy
+            emlékezetes zenei pillanat. Hosszabb rendezvényen több rövidebb megszólalás is jobb lehet,
+            mint egyetlen hosszú blokk. A legjobb megoldást mindig az esemény menete alapján érdemes kiválasztani.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="faqHeadingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour"
+            aria-expanded="false" aria-controls="faqFour">
+            Tanuláshoz kell-e rögtön teljes duda?
+          </button>
+        </h3>
+        <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Nem. A tanulás általában gyakorlósípon, vagyis practice chanteren indul. Ezen lehet
+            megtanulni az ujjrendet, az első dallamokat és a díszítések alapjait. Teljes dudára akkor
+            érdemes váltani, amikor ezek már stabilan mennek; ez tanulótól és gyakorlástól függően
+            általában körülbelül 6-24 hónap gyakorlósípon való játék után reális. Így a teljes hangszer
+            kezelése nem egyszerre minden alapfeladattal terheli a tanulót.
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
