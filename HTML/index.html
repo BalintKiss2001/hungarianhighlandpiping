@@ -102,13 +102,134 @@
     .custom-bio-text {
       padding-left: 0 !important;
     }
+
+    .home-blog-section {
+      padding: 3rem 1rem;
+    }
+
+    .home-blog-intro {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      color: #333333;
+      line-height: 1.7;
+    }
+
+    .home-blog-card {
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .home-blog-slider {
+      position: relative;
+    }
+
+    .home-blog-slider .row {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 1rem;
+    }
+
+    .home-blog-slider .row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-blog-slider article {
+      flex: 0 0 33.333%;
+      scroll-snap-align: start;
+    }
+
+    .home-blog-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .home-blog-arrow {
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background-color: #006a51;
+      color: #ffffff;
+      font-size: 1.7rem;
+      line-height: 1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .home-blog-arrow:hover {
+      background-color: #00513e;
+    }
+
+    .home-blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .home-blog-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .home-blog-card-body {
+      padding: 1.25rem;
+    }
+
+    .home-blog-meta {
+      color: #006a51;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .home-blog-card h3 {
+      font-family: 'IM Fell DW Pica SC', serif;
+      color: #006a51;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .home-blog-card p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .home-blog-link {
+      color: #006a51;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .home-blog-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 991px) {
+      .home-blog-slider article {
+        flex-basis: 50%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .home-blog-slider article {
+        flex-basis: 88%;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%; overflow: hidden;">
     <div class="container">
       <a class="navbar-brand" href="">
         <img src="logodudabalint3.png" alt="Kiss Bálint" height="70">
@@ -122,6 +243,7 @@
           <!--<li class="nav-item"><a class="nav-link" href="oldal 2 szolgáltatások.html">Szolgáltatások</a></li>-->
           <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
           <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
           <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
         </ul>
@@ -143,8 +265,8 @@
     <div class="row gx-3 gy-4 align-items-center flex-lg-row flex-column">
       <div class="col-12 col-lg-5">
         <div class="rounded d-flex justify-content-center align-items-start p-1" style="min-height: 350px;">
-          <img src="img/IMG_20250526_171630.png" class="rounded" alt="Leírás a képről"
-            style="max-width: 100%; max-height: 320px; height: auto; width: auto;">
+          <img src="img/IMG_20250526_171630.jpg" class="rounded" alt="Leírás a képről"
+            style="max-width: 100%; max-height: 420px; height: auto; width: auto; object-fit: contain;">
         </div>
       </div>
       <div class="col-12 col-lg-7 custom-bio-text">
@@ -173,6 +295,103 @@
   </section>
 
 
+  <!-- Blog Preview Section -->
+  <section class="container home-blog-section">
+    <div class="text-center">
+      <h2 class="section-heading mb-3">Blog</h2>
+      <p class="home-blog-intro">
+        Egyre több olvasnivaló gyűlik a skót duda világáról: tanulás, hangszervásárlás,
+        zenetörténet, piobaireachd és gyakorlati tanácsok egy helyen.
+      </p>
+    </div>
+
+    <div class="home-blog-controls" aria-label="Blogbejegyzések lapozása">
+      <button class="home-blog-arrow" type="button" data-blog-scroll="left" aria-label="Előző blogbejegyzések">&#8249;</button>
+      <button class="home-blog-arrow" type="button" data-blog-scroll="right" aria-label="Következő blogbejegyzések">&#8250;</button>
+    </div>
+
+    <div class="home-blog-slider">
+    <div class="row g-4" id="homeBlogTrack">
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/duda2022.jpg" alt="Skótdudás fellépés közben">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Hagyomány</div>
+            <h3>Mitől különleges a skót duda hangja?</h3>
+            <p>A bordunhang, a díszítések és a dallamvezetés együtt adják a hangszer felismerhető karakterét.</p>
+            <a class="home-blog-link" href="blog-skot-duda-hangja.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/szakmaielitdij.jpg" alt="Skótduda ünnepi eseményen">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Fellépések</div>
+            <h3>Skótduda esküvőn és ünnepen</h3>
+            <p>Hogyan adhat méltó, emlékezetes keretet egy jól megválasztott duda-dallam?</p>
+            <a class="home-blog-link" href="blog-skotduda-eskuvo-unnep.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/IMG_20250526_171630.jpg" alt="Kiss Bálint skótdudás portré">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Gyakorlás</div>
+            <h3>Hogyan épül fel a gyakorlás?</h3>
+            <p>Levegővezetés, díszítések, stabil intonáció és a fellépés előtti felkészülés.</p>
+            <a class="home-blog-link" href="blog-dudas-gyakorlas.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/celtic.jpg" alt="Ceòl Mór és Ceòl Beag skót dudazene">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Zenetörténet</div>
+            <h3>Ceòl Mór és Ceòl Beag</h3>
+            <p>A skót dudazene komolyzenei és könnyűzenei oldala, MacCrimmonokkal és Angus MacKay-jel.</p>
+            <a class="home-blog-link" href="blog-ceol-mor-ceol-beag.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/mccallum.png" alt="Minőségi skót duda vásárláshoz">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Vásárlás</div>
+            <h3>Milyen dudát érdemes venni?</h3>
+            <p>Árkategóriák, készítők, európai disztribútorok és a pakisztáni díszdudák csapdái.</p>
+            <a class="home-blog-link" href="blog-duda-vasarlas.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6 col-lg-4">
+        <div class="home-blog-card">
+          <img src="img/DSC09005.webp" alt="Skótduda tanulás és gyakorlás">
+          <div class="home-blog-card-body">
+            <div class="home-blog-meta">Tanulás</div>
+            <h3>Hogyan kezdj bele?</h3>
+            <p>Gyakorlósíp, tanár, alapkönyv, napi rutin és az első lépések a teljes hangszerig.</p>
+            <a class="home-blog-link" href="blog-duda-tanulas.html">Tovább a cikkhez</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="blog.html" class="btn btn-custom btn-lg shadow">Összes blogbejegyzés</a>
+    </div>
+  </section>
+
+
   <!-- Services Button -->
   <div class="text-center my-4">
     <a href="galéria.html" class="btn btn-custom btn-lg shadow">Galéria</a>
@@ -192,6 +411,30 @@
   </footer>
 
   <!-- Bootstrap JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("homeBlogTrack");
+      const buttons = document.querySelectorAll("[data-blog-scroll]");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (!track) {
+            return;
+          }
+
+          const firstCard = track.querySelector("article");
+          const gap = 24;
+          const cardWidth = firstCard ? firstCard.getBoundingClientRect().width + gap : track.clientWidth;
+          const direction = button.dataset.blogScroll === "right" ? 1 : -1;
+
+          track.scrollBy({
+            left: cardWidth * direction,
+            behavior: "smooth"
+          });
+        });
+      });
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
