@@ -6,7 +6,9 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("signInButton");
 const signOutButton = document.getElementById("signOutButton");
+const profileSection = document.getElementById("profileSection");
 const userEmail = document.getElementById("userEmail");
+const userId = document.getElementById("userId");
 
 function setStatus(message, type = "info") {
   if (!statusBox) {
@@ -28,13 +30,15 @@ async function refreshSession() {
 
   if (user) {
     userEmail.textContent = user.email || "";
+    userId.textContent = user.id || "";
     authForm.hidden = true;
-    signOutButton.hidden = false;
+    profileSection.hidden = false;
     setStatus("Be vagy jelentkezve.", "success");
   } else {
     userEmail.textContent = "";
+    userId.textContent = "";
     authForm.hidden = false;
-    signOutButton.hidden = true;
+    profileSection.hidden = true;
     setStatus("A fórum írásához jelentkezz be.", "secondary");
   }
 }
