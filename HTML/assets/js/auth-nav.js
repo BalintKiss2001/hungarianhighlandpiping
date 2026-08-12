@@ -8,12 +8,6 @@ function injectAuthNavStyles() {
   const style = document.createElement("style");
   style.id = "authNavStyles";
   style.textContent = `
-    .auth-nav-item {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
     .navbar,
     .navbar .container,
     .navbar-collapse,
@@ -21,9 +15,54 @@ function injectAuthNavStyles() {
       overflow: visible !important;
     }
 
+    .navbar .container {
+      max-width: min(1720px, calc(100% - 2rem));
+    }
+
+    .navbar-brand {
+      flex: 0 0 auto;
+      margin-right: clamp(1rem, 2vw, 2.5rem);
+    }
+
+    .navbar-collapse {
+      flex: 1 1 auto;
+    }
+
+    .navbar-nav {
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(0.35rem, 0.8vw, 1rem) !important;
+    }
+
+    .navbar-nav .nav-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+      white-space: nowrap;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .nav-item.nav-auth-start {
+      margin-left: 0;
+    }
+
+    .nav-item.nav-language-item {
+      margin-left: 0;
+    }
+
+    .auth-nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
     .auth-profile-button {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border: 1px solid rgba(255, 255, 255, 0.72);
       border-radius: 50%;
       background: transparent;
@@ -84,7 +123,30 @@ function injectAuthNavStyles() {
       overflow-wrap: anywhere;
     }
 
+    @media (max-width: 1199px) {
+      .navbar-nav {
+        gap: 0.45rem !important;
+        font-size: 0.95rem;
+      }
+    }
+
     @media (max-width: 991px) {
+      .navbar-brand {
+        margin-right: 0;
+      }
+
+      .navbar-nav {
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.55rem !important;
+        padding-top: 1rem;
+      }
+
+      .nav-item.nav-auth-start,
+      .nav-item.nav-language-item {
+        margin-left: 0;
+      }
+
       .auth-profile-menu {
         left: 0;
         right: auto;
@@ -103,30 +165,73 @@ function findLanguageItem(navList) {
   });
 }
 
+function findItemByHref(navList, href) {
+  return navList.querySelector(`a[href="${href}"]`)?.closest(".nav-item") || null;
+}
+
 function ensureMaterialsLink(navList) {
-  if (navList.querySelector('a[href="oktatoanyagok.html"]')) {
-    return;
+  let item = findItemByHref(navList, "oktatoanyagok.html");
+
+  if (!item) {
+    item = document.createElement("li");
+    item.className = "nav-item";
+    item.innerHTML = '<a class="nav-link" href="oktatoanyagok.html">Oktatóanyagok</a>';
   }
 
-  const item = document.createElement("li");
-  item.className = "nav-item";
-  item.innerHTML = '<a class="nav-link" href="oktatoanyagok.html">Oktatóanyagok</a>';
-
-  const forumLink = navList.querySelector('a[href="forum.html"]');
-  const forumItem = forumLink?.closest(".nav-item");
+  const forumItem = findItemByHref(navList, "forum.html");
   if (forumItem) {
     forumItem.insertAdjacentElement("beforebegin", item);
-    return;
+    return item;
   }
 
-  const blogLink = navList.querySelector('a[href="blog.html"]');
-  const blogItem = blogLink?.closest(".nav-item");
+  const blogItem = findItemByHref(navList, "blog.html");
   if (blogItem) {
     blogItem.insertAdjacentElement("afterend", item);
-    return;
+    return item;
   }
 
   navList.appendChild(item);
+  return item;
+}
+
+function normalizeNavOrder(navList) {
+  ensureMaterialsLink(navList);
+
+  [
+    "index.html",
+    "galéria.html",
+    "hanganyagok.html",
+    "blog.html",
+    "oktatoanyagok.html",
+    "forum.html",
+    "oldal_3_kapcsolat.html",
+    "login.html",
+    "register.html"
+  ].forEach((href) => {
+    const item = findItemByHref(navList, href);
+    if (item) {
+      item.classList.remove("nav-auth-start", "nav-language-item");
+      navList.appendChild(item);
+    }
+  });
+
+  const languageItem = findLanguageItem(navList);
+  if (languageItem) {
+    languageItem.classList.remove("nav-auth-start");
+    languageItem.classList.add("nav-language-item");
+    navList.appendChild(languageItem);
+  }
+
+  const authStart = getVisibleAuthStart(navList);
+  authStart?.classList.add("nav-auth-start");
+}
+
+function getVisibleAuthStart(navList) {
+  return [
+    findItemByHref(navList, "login.html"),
+    findItemByHref(navList, "register.html"),
+    findLanguageItem(navList)
+  ].find((item) => item && !item.hidden) || null;
 }
 
 function createProfileItem() {
@@ -195,7 +300,7 @@ async function initAuthNav() {
   }
 
   injectAuthNavStyles();
-  ensureMaterialsLink(navList);
+  normalizeNavOrder(navList);
 
   const profileItem = createProfileItem();
   const languageItem = findLanguageItem(navList);
@@ -216,6 +321,13 @@ async function initAuthNav() {
     setLinkHidden("register.html", Boolean(user));
     emailValue.textContent = user ? getUsernameFromEmail(user.email) : "Nem vagy bejelentkezve.";
     renderActions(actions, user);
+
+    document.querySelectorAll(".nav-auth-start").forEach((item) => {
+      item.classList.remove("nav-auth-start");
+    });
+
+    const authStart = getVisibleAuthStart(navList);
+    authStart?.classList.add("nav-auth-start");
   }
 
   button.addEventListener("click", () => {
