@@ -1,41 +1,92 @@
 const { onDocumentCreated } = require("firebase-functions/v2/firestore");
-const functions = require("firebase-functions");
-const nodemailer = require("nodemailer");
+const { defineSecret } = require("firebase-functions/params");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "thehungarianhighlandpiper@gmail.com",
-    pass: "rydqqhjhoqtnastl"
-  }
-});
+const resendApiKey = defineSecret("RESEND_API_KEY");
+const RESEND_EMAIL_ENDPOINT = "https://api.resend.com/emails";
 
-exports.sendBookingConfirmation = onDocumentCreated("bookings/{bookingId}", async (event) => {
-  const data = event.data.data();
+function getSenderAddress() {
+  return process.env.RESEND_FROM || "Kiss Balint Skotdudas <ertesites@your-domain.hu>";
+}
 
-  const mailOptions = {
-    from: '"Foglalás" <thehungarianhighlandpiper@gmail.com>',
-    to: data.email,
-    subject: "Foglalás visszaigazolása",
-    text: `
+function getAdminAddress() {
+  return process.env.NOTIFICATION_TO || "thehungarianhighlandpiper@gmail.com";
+}
+
+function buildBookingText(data) {
+  return `
 Kedves ${data.name}!
 
-Köszönjük foglalását!
+Koszonjuk foglalasat!
 
-Részletek:
-• Időpont: ${data.start}
-• Típus: ${data.type}
-• Ár: ${data.price} HUF
+Reszletek:
+- Idopont: ${data.start}
+- Tipus: ${data.type}
+- Ar: ${data.price} HUF
 
-Üdvözlettel:
-Kiss Bálint
-    `
-  };
+Udvozlettel:
+Kiss Balint
+  `;
+}
+
+async function sendResendEmail(apiKey, message) {
+  const response = await fetch(RESEND_EMAIL_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(message)
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Resend API error ${response.status}: ${errorText}`);
+  }
+
+  return response.json();
+}
+
+exports.sendBookingConfirmation = onDocumentCreated({
+  document: "bookings/{bookingId}",
+  secrets: [resendApiKey]
+}, async (event) => {
+  if (!event.data) {
+    console.warn("Booking notification skipped: missing Firestore event data.");
+    return;
+  }
+
+  const data = event.data.data();
+  const apiKey = resendApiKey.value();
+  const from = getSenderAddress();
+  const adminAddress = getAdminAddress();
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log("Email elküldve: " + data.email);
+    await sendResendEmail(apiKey, {
+      from,
+      to: [data.email],
+      reply_to: adminAddress,
+      subject: "Foglalas visszaigazolasa",
+      text: buildBookingText(data)
+    });
+
+    await sendResendEmail(apiKey, {
+      from,
+      to: [adminAddress],
+      reply_to: data.email,
+      subject: `Uj foglalas: ${data.name}`,
+      text: `
+Uj foglalas erkezett.
+
+Nev: ${data.name}
+Email: ${data.email}
+Idopont: ${data.start}
+Tipus: ${data.type}
+Ar: ${data.price} HUF
+      `
+    });
+
+    console.log("Resend booking notifications sent:", data.email);
   } catch (error) {
-    console.error("Hiba az email küldésekor:", error);
+    console.error("Resend email sending failed:", error);
   }
 });

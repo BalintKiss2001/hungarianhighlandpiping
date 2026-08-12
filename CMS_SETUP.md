@@ -66,6 +66,26 @@ Recommended setup for a static Netlify site:
 
 The browser only uses the public anon key. Forum write access is protected by Supabase Auth and Postgres Row Level Security.
 
+## Resend Notification Emails
+
+Booking confirmation emails now use Resend from Firebase Functions.
+
+Required setup:
+
+```powershell
+cd HTML
+firebase functions:secrets:set RESEND_API_KEY
+```
+
+Create `HTML/functions/.env` from `HTML/functions/.env.example` and set the sender/recipient:
+
+```text
+RESEND_FROM="Kiss Balint Skotdudas <ertesites@sajatdomain.hu>"
+NOTIFICATION_TO="thehungarianhighlandpiper@gmail.com"
+```
+
+Use an email address on your verified Resend domain for `RESEND_FROM`, for example `ertesites@sajatdomain.hu`.
+
 ## Known CMS Path Limitation
 
 The Decap config intentionally skips files with accented characters or spaces in the filename. GitHub/Decap request paths can fail on those names with errors such as `Invalid path specified in request URL`.
