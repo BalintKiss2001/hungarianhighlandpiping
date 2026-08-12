@@ -13,6 +13,6 @@ export function showConfigMessage(element) {
     return;
   }
 
-  element.textContent = "A bejelentkezeshez eloszor add meg a Supabase URL-t es anon kulcsot az assets/js/supabase-config.js fajlban.";
+  element.textContent = "A bejelentkezéshez először add meg a Supabase URL-t és anon kulcsot az assets/js/supabase-config.js fájlban.";
   element.className = "alert alert-warning";
 }

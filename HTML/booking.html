@@ -162,13 +162,13 @@
         nowPlus24h.setHours(nowPlus24h.getHours() + 24);
 
         if (selectedDate < nowPlus24h) {
-          window.siteFeedback?.error('Csak 24 oraval kesobbi idopont foglalhato.');
-          status.textContent = '⚠️ Csak 24 órával későbbi időpont foglalható.';
+          window.siteFeedback?.error('Csak 24 órával későbbi időpont foglalható.');
+          status.textContent = 'Csak 24 órával későbbi időpont foglalható.';
           return;
         }
 
         try {
-          window.siteFeedback?.loading('Foglalas mentese...');
+          window.siteFeedback?.loading('Foglalás mentése...');
           await addDoc(collection(db, "bookings"), {
             name: bookingForm.name.value,
             email: bookingForm.email.value,
@@ -178,14 +178,14 @@
             timestamp: new Date().toISOString()
           });
 
-          status.textContent = '✅ Sikeres foglalás!';
-          window.siteFeedback?.success('Sikeres foglalas!');
+          status.textContent = 'Sikeres foglalás!';
+          window.siteFeedback?.success('Sikeres foglalás!');
           bookingForm.reset();
           bookingForm.classList.remove('was-validated');
         } catch (error) {
-          window.siteFeedback?.error('Hiba a foglalas mentesekor.');
+          window.siteFeedback?.error('Hiba a foglalás mentésekor.');
           console.error('Hiba történt:', error);
-          status.textContent = '❌ Hiba a foglalás mentésekor.';
+          status.textContent = 'Hiba a foglalás mentésekor.';
         }
       });
 

@@ -19,11 +19,11 @@ editor:
 
 collections:
   - name: "main_pages"
-    label: "Fo oldalak"
+    label: "Fő oldalak"
     editor:
       preview: false
     files:
-      - label: "Kezdolap"
+      - label: "Kezdőlap"
         name: "home"
         file: "HTML/index.html"
         fields:
@@ -59,7 +59,7 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Bejelentkezes"
+      - label: "Bejelentkezés"
         name: "login"
         file: "HTML/login.html"
         fields:
@@ -68,7 +68,16 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Forum"
+      - label: "Regisztráció"
+        name: "register"
+        file: "HTML/register.html"
+        fields:
+          - label: "HTML tartalom"
+            name: "body"
+            widget: "code"
+            default_language: "html"
+            output_code_only: true
+      - label: "Fórum"
         name: "forum"
         file: "HTML/forum.html"
         fields:
@@ -79,11 +88,11 @@ collections:
             output_code_only: true
 
   - name: "blog_posts"
-    label: "Blogbejegyzesek"
+    label: "Blogbejegyzések"
     editor:
       preview: false
     files:
-      - label: "Mitol kulonleges a skot duda hangja?"
+      - label: "Mitől különleges a skót duda hangja?"
         name: "skot_duda_hangja"
         file: "HTML/blog-skot-duda-hangja.html"
         fields:
@@ -92,7 +101,7 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Skotduda eskuvon es unnepi esemenyen"
+      - label: "Skótduda esküvőn és ünnepi eseményen"
         name: "eskuvo_unnep"
         file: "HTML/blog-skotduda-eskuvo-unnep.html"
         fields:
@@ -101,7 +110,7 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Hogyan epul fel a gyakorlas?"
+      - label: "Hogyan épül fel a gyakorlás?"
         name: "dudas_gyakorlas"
         file: "HTML/blog-dudas-gyakorlas.html"
         fields:
@@ -110,7 +119,7 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Ceol Mor es Ceol Beag"
+      - label: "Ceòl Mór és Ceòl Beag"
         name: "ceol_mor_ceol_beag"
         file: "HTML/blog-ceol-mor-ceol-beag.html"
         fields:
@@ -119,7 +128,7 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
-      - label: "Milyen dudat erdemes venni?"
+      - label: "Milyen dudát érdemes venni?"
         name: "duda_vasarlas"
         file: "HTML/blog-duda-vasarlas.html"
         fields:

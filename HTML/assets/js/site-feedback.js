@@ -83,8 +83,8 @@
   overlay.innerHTML = `
     <div class="site-feedback__panel">
       <div class="site-feedback__icon is-loading" aria-hidden="true"></div>
-      <h2 class="site-feedback__title">Betoltes...</h2>
-      <p class="site-feedback__message">Kerlek varj egy pillanatot.</p>
+      <h2 class="site-feedback__title">Betöltés...</h2>
+      <p class="site-feedback__message">Kérlek várj egy pillanatot.</p>
     </div>
   `;
 
@@ -118,13 +118,13 @@
 
   window.siteFeedback = {
     loading(message) {
-      setFeedback("loading", "Betoltes...", message || "Kerlek varj egy pillanatot.");
+      setFeedback("loading", "Betöltés...", message || "Kérlek várj egy pillanatot.");
     },
     success(message) {
-      setFeedback("success", "Sikeres muvelet", message || "A muvelet sikeresen lefutott.", 1800);
+      setFeedback("success", "Sikeres művelet", message || "A művelet sikeresen lefutott.", 1800);
     },
     error(message) {
-      setFeedback("error", "Hiba tortent", message || "Kerlek probald ujra.", 2600);
+      setFeedback("error", "Hiba történt", message || "Kérlek próbáld újra.", 2600);
     },
     hide() {
       overlay.classList.remove("is-visible");

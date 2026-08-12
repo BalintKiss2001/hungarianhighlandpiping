@@ -19,7 +19,7 @@ function renderPosts(posts) {
   postsList.innerHTML = "";
 
   if (!posts.length) {
-    postsList.innerHTML = '<p class="text-muted mb-0">Meg nincs beszelgetes.</p>';
+    postsList.innerHTML = '<p class="text-muted mb-0">Még nincs beszélgetés.</p>';
     return;
   }
 
@@ -44,7 +44,7 @@ function renderPosts(posts) {
 }
 
 async function loadPosts() {
-  window.siteFeedback?.loading("Beszelgetesek betoltese...");
+  window.siteFeedback?.loading("Beszélgetések betöltése...");
 
   const { data, error } = await supabase
     .from("forum_posts")
@@ -69,22 +69,22 @@ async function refreshSession() {
   postForm.hidden = !user;
 
   if (user) {
-    setStatus("Bejelentkezve. Uj beszelgetest indithatsz.", "success");
+    setStatus("Bejelentkezve. Új beszélgetést indíthatsz.", "success");
   } else {
-    setStatus("Olvasni lehet bejelentkezes nelkul, irashoz jelentkezz be.", "secondary");
+    setStatus("Olvasni lehet bejelentkezés nélkül, íráshoz jelentkezz be.", "secondary");
   }
 }
 
 postForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  window.siteFeedback?.loading("Bejegyzes mentese...");
+  window.siteFeedback?.loading("Bejegyzés mentése...");
 
   const { data } = await supabase.auth.getUser();
   const user = data.user;
 
   if (!user) {
-    setStatus("Iras elott jelentkezz be.", "warning");
-    window.siteFeedback?.error("Iras elott jelentkezz be.");
+    setStatus("Írás előtt jelentkezz be.", "warning");
+    window.siteFeedback?.error("Írás előtt jelentkezz be.");
     return;
   }
 
@@ -102,8 +102,8 @@ postForm?.addEventListener("submit", async (event) => {
 
   postForm.reset();
   await loadPosts();
-  setStatus("A bejegyzes mentve.", "success");
-  window.siteFeedback?.success("A bejegyzes mentve.");
+  setStatus("A bejegyzés mentve.", "success");
+  window.siteFeedback?.success("A bejegyzés mentve.");
 });
 
 if (!isSupabaseConfigured) {

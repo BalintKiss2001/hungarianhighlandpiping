@@ -5,7 +5,6 @@ const authForm = document.getElementById("authForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("signInButton");
-const signUpButton = document.getElementById("signUpButton");
 const signOutButton = document.getElementById("signOutButton");
 const userEmail = document.getElementById("userEmail");
 
@@ -36,12 +35,12 @@ async function refreshSession() {
     userEmail.textContent = "";
     authForm.hidden = false;
     signOutButton.hidden = true;
-    setStatus("A forum irasahoz jelentkezz be vagy hozz letre fiokot.", "secondary");
+    setStatus("A fórum írásához jelentkezz be.", "secondary");
   }
 }
 
 async function signIn() {
-  window.siteFeedback?.loading("Bejelentkezes folyamatban...");
+  window.siteFeedback?.loading("Bejelentkezés folyamatban...");
 
   const { error } = await supabase.auth.signInWithPassword({
     email: emailInput.value,
@@ -55,34 +54,15 @@ async function signIn() {
   }
 
   await refreshSession();
-  window.siteFeedback?.success("Sikeres bejelentkezes.");
-}
-
-async function signUp() {
-  window.siteFeedback?.loading("Fiok letrehozasa folyamatban...");
-
-  const { error } = await supabase.auth.signUp({
-    email: emailInput.value,
-    password: passwordInput.value
-  });
-
-  if (error) {
-    setStatus(error.message, "danger");
-    window.siteFeedback?.error(error.message);
-    return;
-  }
-
-  setStatus("Fiok letrehozva. Ha email megerosites be van kapcsolva, ellenorizd a postafiokodat.", "success");
-  window.siteFeedback?.success("Fiok letrehozva.");
+  window.siteFeedback?.success("Sikeres bejelentkezés.");
 }
 
 signInButton?.addEventListener("click", signIn);
-signUpButton?.addEventListener("click", signUp);
 signOutButton?.addEventListener("click", async () => {
-  window.siteFeedback?.loading("Kijelentkezes...");
+  window.siteFeedback?.loading("Kijelentkezés...");
   await supabase.auth.signOut();
   await refreshSession();
-  window.siteFeedback?.success("Sikeres kijelentkezes.");
+  window.siteFeedback?.success("Sikeres kijelentkezés.");
 });
 
 refreshSession();
