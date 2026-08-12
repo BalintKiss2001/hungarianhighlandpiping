@@ -1,11 +1,12 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const config = window.HHP_SUPABASE || {};
+const supabaseUrl = (config.url || "").replace(/\/rest\/v1\/?$/, "").replace(/\/$/, "");
 
-export const isSupabaseConfigured = Boolean(config.url && config.anonKey);
+export const isSupabaseConfigured = Boolean(supabaseUrl && config.anonKey);
 
 export const supabase = isSupabaseConfigured
-  ? createClient(config.url, config.anonKey)
+  ? createClient(supabaseUrl, config.anonKey)
   : null;
 
 export function showConfigMessage(element) {
