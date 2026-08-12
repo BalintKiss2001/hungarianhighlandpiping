@@ -44,6 +44,17 @@ async function loadProfiles(userIds) {
   });
 }
 
+function groupCommentsByPost(comments) {
+  return (comments || []).reduce((groups, comment) => {
+    if (!groups[comment.post_id]) {
+      groups[comment.post_id] = [];
+    }
+
+    groups[comment.post_id].push(comment);
+    return groups;
+  }, {});
+}
+
 function renderComments(container, comments) {
   if (!comments.length) {
     const empty = document.createElement("p");
@@ -57,6 +68,7 @@ function renderComments(container, comments) {
     const item = document.createElement("article");
     const meta = document.createElement("div");
     const body = document.createElement("p");
+    const actions = document.createElement("div");
     const date = new Date(comment.created_at).toLocaleDateString("hu-HU");
 
     item.className = "forum-comment";
@@ -64,9 +76,64 @@ function renderComments(container, comments) {
     meta.textContent = `${getDisplayName(comment.user_id)} | ${date}`;
     body.className = "mb-0";
     body.textContent = comment.body;
+    actions.className = "forum-comment-actions";
 
-    item.append(meta, body);
+    if (currentUser?.id === comment.user_id) {
+      const editButton = document.createElement("button");
+      editButton.type = "button";
+      editButton.className = "btn btn-outline-success btn-sm";
+      editButton.textContent = "Szerkesztés";
+      editButton.addEventListener("click", () => {
+        showEditCommentForm(item, comment);
+      });
+      actions.appendChild(editButton);
+    }
+
+    item.append(meta, body, actions);
     container.appendChild(item);
+  });
+}
+
+function showEditCommentForm(item, comment) {
+  const originalBody = item.querySelector("p");
+  const originalActions = item.querySelector(".forum-comment-actions");
+  const form = document.createElement("form");
+  const textarea = document.createElement("textarea");
+  const saveButton = document.createElement("button");
+  const cancelButton = document.createElement("button");
+
+  form.className = "forum-comment-form";
+  textarea.className = "form-control";
+  textarea.rows = 3;
+  textarea.required = true;
+  textarea.value = comment.body;
+
+  saveButton.type = "submit";
+  saveButton.className = "btn btn-custom btn-sm";
+  saveButton.textContent = "Mentés";
+
+  cancelButton.type = "button";
+  cancelButton.className = "btn btn-outline-secondary btn-sm";
+  cancelButton.textContent = "Mégse";
+
+  const buttons = document.createElement("div");
+  buttons.className = "d-flex gap-2";
+  buttons.append(saveButton, cancelButton);
+  form.append(textarea, buttons);
+
+  originalBody.hidden = true;
+  originalActions.hidden = true;
+  originalActions.insertAdjacentElement("afterend", form);
+
+  cancelButton.addEventListener("click", () => {
+    form.remove();
+    originalBody.hidden = false;
+    originalActions.hidden = false;
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await updateComment(comment.id, textarea.value.trim());
   });
 }
 
@@ -122,23 +189,39 @@ function renderPosts(posts) {
     commentsTitle.textContent = "Hozzászólások";
 
     commentsWrap.appendChild(commentsTitle);
-    renderComments(commentsWrap, post.forum_comments || []);
+    renderComments(commentsWrap, post.comments || []);
     commentsWrap.appendChild(createCommentForm(post.id));
 
     item.append(meta, title, body, commentsWrap);
-
     postsList.appendChild(item);
   });
+}
+
+async function loadComments(postIds) {
+  if (!postIds.length) {
+    return [];
+  }
+
+  const { data, error } = await supabase
+    .from("forum_comments")
+    .select("id,post_id,user_id,body,created_at")
+    .in("post_id", postIds)
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    throw error;
+  }
+
+  return data || [];
 }
 
 async function loadPosts() {
   window.siteFeedback?.loading("Beszélgetések betöltése...");
 
-  const { data, error } = await supabase
+  const { data: posts, error } = await supabase
     .from("forum_posts")
-    .select("id,user_id,title,body,created_at,forum_comments(id,user_id,body,created_at)")
+    .select("id,user_id,title,body,created_at")
     .order("created_at", { ascending: false })
-    .order("created_at", { referencedTable: "forum_comments", ascending: true })
     .limit(20);
 
   if (error) {
@@ -147,14 +230,25 @@ async function loadPosts() {
     return;
   }
 
-  const userIds = [];
-  (data || []).forEach((post) => {
-    userIds.push(post.user_id);
-    (post.forum_comments || []).forEach((comment) => userIds.push(comment.user_id));
-  });
-  await loadProfiles(userIds);
-  renderPosts(data || []);
-  window.siteFeedback?.hide();
+  try {
+    const postIds = (posts || []).map((post) => post.id);
+    const comments = await loadComments(postIds);
+    const commentsByPost = groupCommentsByPost(comments);
+
+    const userIds = [];
+    (posts || []).forEach((post) => userIds.push(post.user_id));
+    comments.forEach((comment) => userIds.push(comment.user_id));
+
+    await loadProfiles(userIds);
+    renderPosts((posts || []).map((post) => ({
+      ...post,
+      comments: commentsByPost[post.id] || []
+    })));
+    window.siteFeedback?.hide();
+  } catch (commentError) {
+    setStatus(commentError.message, "danger");
+    window.siteFeedback?.error(commentError.message);
+  }
 }
 
 async function refreshSession() {
@@ -198,6 +292,39 @@ async function saveComment(postId, body) {
   await loadPosts();
   setStatus("A válasz mentve.", "success");
   window.siteFeedback?.success("A válasz mentve.");
+}
+
+async function updateComment(commentId, body) {
+  if (!currentUser) {
+    setStatus("Szerkesztés előtt jelentkezz be.", "warning");
+    window.siteFeedback?.error("Szerkesztés előtt jelentkezz be.");
+    return;
+  }
+
+  if (!body) {
+    return;
+  }
+
+  window.siteFeedback?.loading("Hozzászólás mentése...");
+
+  const { error } = await supabase
+    .from("forum_comments")
+    .update({
+      body,
+      updated_at: new Date().toISOString()
+    })
+    .eq("id", commentId)
+    .eq("user_id", currentUser.id);
+
+  if (error) {
+    setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
+    return;
+  }
+
+  await loadPosts();
+  setStatus("A hozzászólás frissítve.", "success");
+  window.siteFeedback?.success("A hozzászólás frissítve.");
 }
 
 postForm?.addEventListener("submit", async (event) => {
