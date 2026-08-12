@@ -1,0 +1,12 @@
+services:
+  appsmith:
+    image: appsmith/appsmith-ee:release
+    container_name: hungarianhighlandpiping-appsmith
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - appsmith-stacks:/appsmith-stacks
+
+volumes:
+  appsmith-stacks:
