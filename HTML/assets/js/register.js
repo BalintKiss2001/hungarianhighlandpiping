@@ -57,7 +57,7 @@ async function register() {
   if (data.user) {
     await supabase.from("profiles").upsert({
       id: data.user.id,
-      display_name: "Felhasználó"
+      display_name: emailInput.value.split("@")[0]
     });
   }
 

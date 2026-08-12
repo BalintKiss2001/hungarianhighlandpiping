@@ -18,7 +18,15 @@ function setStatus(message, type = "info") {
 }
 
 function getDisplayName(userId) {
+  if (currentUser?.id === userId) {
+    return profileNames[userId] || getUsernameFromEmail(currentUser.email);
+  }
+
   return profileNames[userId] || "Felhasználó";
+}
+
+function getUsernameFromEmail(email) {
+  return email ? email.split("@")[0] : "Felhasználó";
 }
 
 async function loadProfiles(userIds) {

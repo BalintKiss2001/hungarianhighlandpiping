@@ -6,6 +6,10 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("signInButton");
 
+function getUsernameFromEmail(email) {
+  return email ? email.split("@")[0] : "Felhasználó";
+}
+
 function setStatus(message, type = "info") {
   if (!statusBox) {
     return;
@@ -25,6 +29,13 @@ async function refreshSession() {
   const user = data.user;
 
   if (user) {
+    await supabase.from("profiles").upsert({
+      id: user.id,
+      display_name: getUsernameFromEmail(user.email)
+    }, {
+      onConflict: "id",
+      ignoreDuplicates: true
+    });
     authForm.hidden = true;
     setStatus("Be vagy jelentkezve. A profil ikon alatt tudsz kijelentkezni.", "success");
   } else {

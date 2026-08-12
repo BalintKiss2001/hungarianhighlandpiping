@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oktatóanyagok | Kiss Bálint Skótdudás</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; background-color: #ebdbc9; color: #1f1f1f; margin: 0; }
+    .navbar { align-items: end; }
+    .navbar .container { display: flex; justify-content: space-between; }
+    .navbar-nav { display: flex; gap: 2rem; }
+    .logo { height: 70px; width: auto; }
+    .materials-hero { min-height: 46vh; background-image: linear-gradient(rgba(0, 106, 81, 0.52), rgba(0, 106, 81, 0.78)), url('tartan_custom.png'); background-size: cover; background-position: center; color: #ebdbc9; display: flex; align-items: center; padding: 5rem 1rem; }
+    .materials-title { font-family: 'IM Fell DW Pica SC', serif; font-size: clamp(2.4rem, 6vw, 5rem); margin-bottom: 1rem; }
+    .materials-lead { max-width: 760px; font-size: 1.1rem; line-height: 1.75; }
+    .materials-section { padding: 4rem 1rem; }
+    .section-heading { font-family: 'IM Fell DW Pica SC', serif; font-size: clamp(2rem, 4vw, 3.5rem); color: #006a51; margin-bottom: 2rem; text-align: center; }
+    .lesson-accordion { max-width: 980px; margin: 0 auto; }
+    .lesson-accordion .accordion-item { border: 0; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; background: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); }
+    .lesson-accordion .accordion-button { background: #ffffff; color: #006a51; box-shadow: none; gap: 1rem; align-items: flex-start; }
+    .lesson-accordion .accordion-button:not(.collapsed) { background: #006a51; color: #ffffff; }
+    .lesson-number { flex: 0 0 auto; display: inline-grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #ebdbc9; color: #006a51; font-weight: 700; }
+    .lesson-heading { display: block; font-family: 'IM Fell DW Pica SC', serif; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.15; }
+    .lesson-summary { display: block; margin-top: .3rem; font-size: .95rem; line-height: 1.5; opacity: .88; }
+    .lesson-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); gap: 1.5rem; align-items: start; }
+    .video-slot { aspect-ratio: 16 / 9; display: grid; place-items: center; border-radius: 8px; background: linear-gradient(rgba(0, 106, 81, .68), rgba(0, 106, 81, .82)), url('tartan_custom.png'); background-size: cover; color: #ebdbc9; text-align: center; padding: 1rem; overflow: hidden; }
+    .video-slot iframe { width: 100%; height: 100%; border: 0; }
+    .video-placeholder { max-width: 28rem; line-height: 1.65; font-weight: 700; }
+    .lesson-notes { background: #f8f4ef; border-radius: 8px; padding: 1rem; }
+    .lesson-notes h3 { color: #006a51; font-size: 1rem; font-weight: 700; margin-bottom: .65rem; }
+    .lesson-notes ul { margin-bottom: 0; padding-left: 1.2rem; line-height: 1.7; }
+    .footer { background-color: #006a51; color: white; }
+    .footer-icons img { filter: invert(1); width: 30px; height: 30px; }
+    @media (max-width: 991px) {
+      .navbar-nav { gap: 0.5rem; padding-top: 1rem; }
+      .lesson-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%; overflow: hidden;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="logodudabalint3.png" alt="Kiss Bálint" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Kezdőlap</a></li>
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="oktatoanyagok.html">Oktatóanyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="forum.html">Fórum</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Regisztráció</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="materials-hero">
+    <div class="container">
+      <h1 class="materials-title">Oktatóanyagok</h1>
+      <p class="materials-lead">
+        Lépésről lépésre bővíthető gyakorlóanyagok skót duda tanuláshoz: videók, jegyzetek,
+        gyakorlási célok és rövid feladatok egy helyen.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="materials-section container">
+      <h2 class="section-heading">Gyakorló anyagok</h2>
+
+      <div class="accordion lesson-accordion" id="lessonAccordion">
+        <article class="accordion-item">
+          <h2 class="accordion-header" id="lessonHeadingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#lessonOne" aria-expanded="true" aria-controls="lessonOne">
+              <span class="lesson-number">1</span>
+              <span>
+                <span class="lesson-heading">1. lecke: gyakorlósíp és alaptartás</span>
+                <span class="lesson-summary">Az első stabil hangok, kéztartás és napi gyakorlási ritmus.</span>
+              </span>
+            </button>
+          </h2>
+          <div id="lessonOne" class="accordion-collapse collapse show" aria-labelledby="lessonHeadingOne" data-bs-parent="#lessonAccordion">
+            <div class="accordion-body">
+              <div class="lesson-layout">
+                <div class="video-slot"><div class="video-placeholder">Hamarosan érkezik</div></div>
+                <div class="lesson-notes">
+                  <h3>Gyakorlási fókusz</h3>
+                  <ul>
+                    <li>Gyakorlósíp helyes tartása.</li>
+                    <li>Ujjak lazán, fedett hanglyukakkal.</li>
+                    <li>Rövid, napi 10-15 perces gyakorlás.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <h2 class="accordion-header" id="lessonHeadingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lessonTwo" aria-expanded="false" aria-controls="lessonTwo">
+              <span class="lesson-number">2</span>
+              <span>
+                <span class="lesson-heading">2. lecke: alap hangok és skála</span>
+                <span class="lesson-summary">A hangok tiszta megszólaltatása és lassú, pontos skálázás.</span>
+              </span>
+            </button>
+          </h2>
+          <div id="lessonTwo" class="accordion-collapse collapse" aria-labelledby="lessonHeadingTwo" data-bs-parent="#lessonAccordion">
+            <div class="accordion-body">
+              <div class="lesson-layout">
+                <div class="video-slot"><div class="video-placeholder">Hamarosan érkezik</div></div>
+                <div class="lesson-notes">
+                  <h3>Gyakorlási fókusz</h3>
+                  <ul>
+                    <li>Hangonként lassú felépítés.</li>
+                    <li>Egyenletes tempó metronómmal.</li>
+                    <li>Nyitott és zárt ujjak pontos váltása.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <h2 class="accordion-header" id="lessonHeadingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lessonThree" aria-expanded="false" aria-controls="lessonThree">
+              <span class="lesson-number">3</span>
+              <span>
+                <span class="lesson-heading">3. lecke: első díszítések</span>
+                <span class="lesson-summary">Grace note, G gracenote és egyszerű hangelválasztások.</span>
+              </span>
+            </button>
+          </h2>
+          <div id="lessonThree" class="accordion-collapse collapse" aria-labelledby="lessonHeadingThree" data-bs-parent="#lessonAccordion">
+            <div class="accordion-body">
+              <div class="lesson-layout">
+                <div class="video-slot"><div class="video-placeholder">Hamarosan érkezik</div></div>
+                <div class="lesson-notes">
+                  <h3>Gyakorlási fókusz</h3>
+                  <ul>
+                    <li>Díszítés röviden, nem hangsúlyként.</li>
+                    <li>Lassú ismétlés tiszta hangindítással.</li>
+                    <li>Csak akkor gyorsítani, ha a mozdulat már stabil.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <h2 class="accordion-header" id="lessonHeadingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lessonFour" aria-expanded="false" aria-controls="lessonFour">
+              <span class="lesson-number">4</span>
+              <span>
+                <span class="lesson-heading">4. lecke: első dallam gyakorlása</span>
+                <span class="lesson-summary">Rövid dallam szakaszokra bontva, lassú tempóban.</span>
+              </span>
+            </button>
+          </h2>
+          <div id="lessonFour" class="accordion-collapse collapse" aria-labelledby="lessonHeadingFour" data-bs-parent="#lessonAccordion">
+            <div class="accordion-body">
+              <div class="lesson-layout">
+                <div class="video-slot"><div class="video-placeholder">Hamarosan érkezik</div></div>
+                <div class="lesson-notes">
+                  <h3>Gyakorlási fókusz</h3>
+                  <ul>
+                    <li>Dallam rövid egységekre bontva.</li>
+                    <li>Ritmus előbb tapsolva vagy énekelve.</li>
+                    <li>Csak tiszta szakaszokat összekötni.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-4 mt-5">
+    <div class="container-fluid text-center">
+      <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+      <div class="footer-icons mt-2 d-flex justify-content-center gap-3">
+        <a href="https://www.facebook.com/profile.php?id=61576771014395" target="_blank">
+          <img src="icons8-facebook-60.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script type="module" src="assets/js/auth-nav.js"></script>
+</body>
+
+</html>

@@ -14,6 +14,13 @@ function injectAuthNavStyles() {
       align-items: center;
     }
 
+    .navbar,
+    .navbar .container,
+    .navbar-collapse,
+    .navbar-nav {
+      overflow: visible !important;
+    }
+
     .auth-profile-button {
       width: 38px;
       height: 38px;
@@ -58,7 +65,7 @@ function injectAuthNavStyles() {
       border-radius: 8px;
       padding: 1rem;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
-      z-index: 3000;
+      z-index: 5000;
     }
 
     .auth-profile-menu[hidden] {
@@ -94,6 +101,32 @@ function findLanguageItem(navList) {
     const link = item.querySelector("a");
     return link && link.textContent.trim().toUpperCase() === "HU";
   });
+}
+
+function ensureMaterialsLink(navList) {
+  if (navList.querySelector('a[href="oktatoanyagok.html"]')) {
+    return;
+  }
+
+  const item = document.createElement("li");
+  item.className = "nav-item";
+  item.innerHTML = '<a class="nav-link" href="oktatoanyagok.html">Oktatóanyagok</a>';
+
+  const forumLink = navList.querySelector('a[href="forum.html"]');
+  const forumItem = forumLink?.closest(".nav-item");
+  if (forumItem) {
+    forumItem.insertAdjacentElement("beforebegin", item);
+    return;
+  }
+
+  const blogLink = navList.querySelector('a[href="blog.html"]');
+  const blogItem = blogLink?.closest(".nav-item");
+  if (blogItem) {
+    blogItem.insertAdjacentElement("afterend", item);
+    return;
+  }
+
+  navList.appendChild(item);
 }
 
 function createProfileItem() {
@@ -151,6 +184,10 @@ function renderActions(container, user) {
   container.append(loginLink, registerLink);
 }
 
+function getUsernameFromEmail(email) {
+  return email ? email.split("@")[0] : "Nem vagy bejelentkezve.";
+}
+
 async function initAuthNav() {
   const navList = document.querySelector(".navbar-nav");
   if (!navList) {
@@ -158,6 +195,7 @@ async function initAuthNav() {
   }
 
   injectAuthNavStyles();
+  ensureMaterialsLink(navList);
 
   const profileItem = createProfileItem();
   const languageItem = findLanguageItem(navList);
@@ -176,7 +214,7 @@ async function initAuthNav() {
   function applyUserState(user) {
     setLinkHidden("login.html", Boolean(user));
     setLinkHidden("register.html", Boolean(user));
-    emailValue.textContent = user?.email || "Nem vagy bejelentkezve.";
+    emailValue.textContent = user ? getUsernameFromEmail(user.email) : "Nem vagy bejelentkezve.";
     renderActions(actions, user);
   }
 

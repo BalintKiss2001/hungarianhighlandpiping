@@ -41,6 +41,15 @@ collections:
             widget: "code"
             default_language: "html"
             output_code_only: true
+      - label: "Oktatóanyagok"
+        name: "materials"
+        file: "HTML/oktatoanyagok.html"
+        fields:
+          - label: "HTML tartalom"
+            name: "body"
+            widget: "code"
+            default_language: "html"
+            output_code_only: true
       - label: "Hanganyagok"
         name: "audio"
         file: "HTML/hanganyagok.html"
