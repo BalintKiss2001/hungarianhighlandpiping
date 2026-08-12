@@ -5,10 +5,6 @@ const authForm = document.getElementById("authForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("signInButton");
-const signOutButton = document.getElementById("signOutButton");
-const profileSection = document.getElementById("profileSection");
-const userEmail = document.getElementById("userEmail");
-const userId = document.getElementById("userId");
 
 function setStatus(message, type = "info") {
   if (!statusBox) {
@@ -29,16 +25,10 @@ async function refreshSession() {
   const user = data.user;
 
   if (user) {
-    userEmail.textContent = user.email || "";
-    userId.textContent = user.id || "";
     authForm.hidden = true;
-    profileSection.hidden = false;
-    setStatus("Be vagy jelentkezve.", "success");
+    setStatus("Be vagy jelentkezve. A profil ikon alatt tudsz kijelentkezni.", "success");
   } else {
-    userEmail.textContent = "";
-    userId.textContent = "";
     authForm.hidden = false;
-    profileSection.hidden = true;
     setStatus("A fórum írásához jelentkezz be.", "secondary");
   }
 }
@@ -62,11 +52,4 @@ async function signIn() {
 }
 
 signInButton?.addEventListener("click", signIn);
-signOutButton?.addEventListener("click", async () => {
-  window.siteFeedback?.loading("Kijelentkezés...");
-  await supabase.auth.signOut();
-  await refreshSession();
-  window.siteFeedback?.success("Sikeres kijelentkezés.");
-});
-
 refreshSession();
