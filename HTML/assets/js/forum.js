@@ -44,6 +44,8 @@ function renderPosts(posts) {
 }
 
 async function loadPosts() {
+  window.siteFeedback?.loading("Beszelgetesek betoltese...");
+
   const { data, error } = await supabase
     .from("forum_posts")
     .select("id,title,body,created_at")
@@ -52,10 +54,12 @@ async function loadPosts() {
 
   if (error) {
     setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
     return;
   }
 
   renderPosts(data || []);
+  window.siteFeedback?.hide();
 }
 
 async function refreshSession() {
@@ -73,12 +77,14 @@ async function refreshSession() {
 
 postForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
+  window.siteFeedback?.loading("Bejegyzes mentese...");
 
   const { data } = await supabase.auth.getUser();
   const user = data.user;
 
   if (!user) {
     setStatus("Iras elott jelentkezz be.", "warning");
+    window.siteFeedback?.error("Iras elott jelentkezz be.");
     return;
   }
 
@@ -90,12 +96,14 @@ postForm?.addEventListener("submit", async (event) => {
 
   if (error) {
     setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
     return;
   }
 
   postForm.reset();
   await loadPosts();
   setStatus("A bejegyzes mentve.", "success");
+  window.siteFeedback?.success("A bejegyzes mentve.");
 });
 
 if (!isSupabaseConfigured) {

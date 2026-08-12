@@ -41,6 +41,8 @@ async function refreshSession() {
 }
 
 async function signIn() {
+  window.siteFeedback?.loading("Bejelentkezes folyamatban...");
+
   const { error } = await supabase.auth.signInWithPassword({
     email: emailInput.value,
     password: passwordInput.value
@@ -48,13 +50,17 @@ async function signIn() {
 
   if (error) {
     setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
     return;
   }
 
   await refreshSession();
+  window.siteFeedback?.success("Sikeres bejelentkezes.");
 }
 
 async function signUp() {
+  window.siteFeedback?.loading("Fiok letrehozasa folyamatban...");
+
   const { error } = await supabase.auth.signUp({
     email: emailInput.value,
     password: passwordInput.value
@@ -62,17 +68,21 @@ async function signUp() {
 
   if (error) {
     setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
     return;
   }
 
   setStatus("Fiok letrehozva. Ha email megerosites be van kapcsolva, ellenorizd a postafiokodat.", "success");
+  window.siteFeedback?.success("Fiok letrehozva.");
 }
 
 signInButton?.addEventListener("click", signIn);
 signUpButton?.addEventListener("click", signUp);
 signOutButton?.addEventListener("click", async () => {
+  window.siteFeedback?.loading("Kijelentkezes...");
   await supabase.auth.signOut();
   await refreshSession();
+  window.siteFeedback?.success("Sikeres kijelentkezes.");
 });
 
 refreshSession();

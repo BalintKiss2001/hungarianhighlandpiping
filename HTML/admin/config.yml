@@ -8,7 +8,7 @@ local_backend: true
 publish_mode: editorial_workflow
 
 media_folder: "HTML/img/uploads"
-public_folder: "img/uploads"
+public_folder: "/img/uploads"
 
 site_url: "https://booking-app-b0b82.web.app"
 display_url: "https://booking-app-b0b82.web.app"
@@ -35,15 +35,6 @@ collections:
       - label: "Blog lista"
         name: "blog"
         file: "HTML/blog.html"
-        fields:
-          - label: "HTML tartalom"
-            name: "body"
-            widget: "code"
-            default_language: "html"
-            output_code_only: true
-      - label: "Galeria"
-        name: "gallery"
-        file: "HTML/galéria.html"
         fields:
           - label: "HTML tartalom"
             name: "body"

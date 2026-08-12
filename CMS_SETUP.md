@@ -65,3 +65,16 @@ Recommended setup for a static Netlify site:
 4. In Supabase Auth settings, add your deployed Netlify URL to the allowed site/redirect URLs.
 
 The browser only uses the public anon key. Forum write access is protected by Supabase Auth and Postgres Row Level Security.
+
+## Known CMS Path Limitation
+
+The Decap config intentionally skips files with accented characters or spaces in the filename. GitHub/Decap request paths can fail on those names with errors such as `Invalid path specified in request URL`.
+
+For a cleaner CMS later, rename public files to ASCII slugs, for example:
+
+```text
+galéria.html -> galeria.html
+oldal 2 szolgáltatások.html -> szolgaltatasok.html
+```
+
+Then update the links across the site and add those files back to `HTML/admin/config.yml`.
