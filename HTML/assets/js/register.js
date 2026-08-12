@@ -43,7 +43,7 @@ async function register() {
 
   window.siteFeedback?.loading("Fiók létrehozása folyamatban...");
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: emailInput.value,
     password: passwordInput.value
   });
@@ -52,6 +52,13 @@ async function register() {
     setStatus(error.message, "danger");
     window.siteFeedback?.error(error.message);
     return;
+  }
+
+  if (data.user) {
+    await supabase.from("profiles").upsert({
+      id: data.user.id,
+      display_name: "Felhasználó"
+    });
   }
 
   setStatus("Fiók létrehozva. Ha email megerősítés be van kapcsolva, ellenőrizd a postafiókodat.", "success");
