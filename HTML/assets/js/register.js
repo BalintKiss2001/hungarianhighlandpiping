@@ -45,7 +45,10 @@ async function register() {
 
   const { data, error } = await supabase.auth.signUp({
     email: emailInput.value,
-    password: passwordInput.value
+    password: passwordInput.value,
+    options: {
+      emailRedirectTo: `${window.location.origin}/login.html`
+    }
   });
 
   if (error) {
