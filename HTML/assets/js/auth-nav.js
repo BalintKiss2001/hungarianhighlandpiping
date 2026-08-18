@@ -43,6 +43,13 @@ function injectAuthNavStyles() {
       align-items: center;
     }
 
+    .navbar-nav .nav-item[hidden],
+    .auth-account-item[hidden],
+    .auth-admin-item[hidden],
+    .auth-nav-item[hidden] {
+      display: none !important;
+    }
+
     .navbar-nav .nav-link {
       white-space: nowrap;
       padding-left: 0 !important;
