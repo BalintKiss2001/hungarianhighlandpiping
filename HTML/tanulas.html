@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu" class="admin-checking">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanulás | Admin előnézet</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    html.admin-checking body > *:not(#adminOnlyStatus) { display: none !important; }
+    body { font-family: 'Poppins', sans-serif; background-color: #ebdbc9; color: #1f1f1f; margin: 0; }
+    .navbar { align-items: end; }
+    .navbar .container { display: flex; justify-content: space-between; }
+    .navbar-nav { display: flex; gap: 2rem; }
+    .logo { height: 70px; width: auto; }
+    .page-hero { min-height: 44vh; background-image: linear-gradient(rgba(0,106,81,.58), rgba(0,106,81,.82)), url('img/DSC09005.webp'); background-size: cover; background-position: center; color: #ebdbc9; display: flex; align-items: center; padding: 5rem 1rem; }
+    .page-title { font-family: 'IM Fell DW Pica SC', serif; font-size: clamp(2.4rem, 6vw, 5rem); margin-bottom: 1rem; }
+    .page-lead { max-width: 780px; font-size: 1.1rem; line-height: 1.75; }
+    .content-section { padding: 4rem 1rem; }
+    .section-heading { font-family: 'IM Fell DW Pica SC', serif; color: #006a51; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; }
+    .learning-card { height: 100%; background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+    .learning-card h2, .learning-card h3 { font-family: 'IM Fell DW Pica SC', serif; color: #006a51; }
+    .learning-card p, .learning-card li { line-height: 1.75; }
+    .timeline-step { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,106,81,.16); }
+    .timeline-step:last-child { border-bottom: 0; }
+    .timeline-time { color: #006a51; font-weight: 700; }
+    .admin-note { background: #fff3cd; color: #664d03; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+    .footer { background-color: #006a51; color: white; }
+    @media (max-width: 991px) { .navbar-nav { gap: .5rem; padding-top: 1rem; } .timeline-step { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="logodudabalint3.png" alt="Kiss Bálint" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Kezdőlap</a></li>
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="forum.html">Fórum</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Regisztráció</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Skót duda tanulás</h1>
+      <p class="page-lead">Admin előnézet: későbbi oktatási oldal kezdőknek, gyakorlósíptól a teljes dudáig.</p>
+    </div>
+  </header>
+
+  <main class="content-section container">
+    <div class="admin-note">Ez az oldal egyelőre admin-only, amíg az oktatási/szolgáltatási rész nem publikus.</div>
+
+    <div class="row g-4">
+      <article class="col-lg-6">
+        <div class="learning-card">
+          <h2>Hogyan indul a tanulás?</h2>
+          <p>A kezdés gyakorlósípon történik. Itt alakul ki az ujjrend, a dallamolvasás, a ritmus és a díszítések alapja. Teljes dudát nem kell rögtön venni.</p>
+          <ul>
+            <li>practice chanter és alapkönyv</li>
+            <li>rövid, rendszeres gyakorlás</li>
+            <li>tanári visszajelzés a rossz beidegződések ellen</li>
+          </ul>
+        </div>
+      </article>
+      <article class="col-lg-6">
+        <div class="learning-card">
+          <h2>Mikor jön a teljes duda?</h2>
+          <p>Tanulótól és gyakorlástól függően általában 6-24 hónap gyakorlósíp után reális a teljes dudára váltás. Addigra az alap mozdulatoknak már stabilnak kell lenniük.</p>
+          <ul>
+            <li>stabil dallamok gyakorlósípon</li>
+            <li>tiszta díszítések lassú tempóban</li>
+            <li>felkészülés levegővezetésre és zsáknyomásra</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <section class="learning-card mt-4">
+      <h2 class="section-heading">Tanulási út</h2>
+      <div class="timeline-step">
+        <div class="timeline-time">0-3 hónap</div>
+        <div>Gyakorlósíp, kéztartás, skála, egyszerű ritmusok.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-time">3-9 hónap</div>
+        <div>Első dallamok, alap díszítések, metronómos gyakorlás.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-time">9-18 hónap</div>
+        <div>Dallamrepertoár bővítése, technikai tisztaság, állóképesség.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-time">6-24 hónap</div>
+        <div>Megfelelő alapok esetén fokozatos váltás teljes dudára.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/site-feedback.js"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script type="module" src="assets/js/admin-page-guard.js"></script>
+  <script type="module" src="assets/js/auth-nav.js"></script>
+</body>
+
+</html>

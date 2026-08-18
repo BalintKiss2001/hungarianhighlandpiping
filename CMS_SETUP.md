@@ -16,6 +16,28 @@ When deployed with the site, open:
 /admin/
 ```
 
+The admin page is only shown to logged-in Supabase users whose email is listed in:
+
+```text
+HTML/assets/js/supabase-config.js -> window.HHP_ADMIN_EMAILS
+```
+
+By default the admin account is:
+
+```text
+kissbalint12@gmail.com
+```
+
+Admin-only draft pages are also available from the logged-in admin navigation:
+
+```text
+HTML/fellepesek.html
+HTML/rendezveny-csomagok.html
+HTML/tanulas.html
+```
+
+These pages use `HTML/assets/js/admin-page-guard.js`, so direct access redirects non-admin users.
+
 It uses Decap CMS with the GitHub backend and writes changes to:
 
 ```text
@@ -28,7 +50,19 @@ Uploaded media is stored in:
 HTML/img/uploads
 ```
 
-For production login on GitHub, Decap CMS needs a GitHub OAuth/auth proxy configured for the deployed domain. For local UI testing, Decap's local backend is enabled in `HTML/admin/config.yml`.
+For production login on Netlify, use Netlify's built-in GitHub OAuth provider. Create a GitHub OAuth App with this callback URL:
+
+```text
+https://api.netlify.com/auth/done
+```
+
+Then add the GitHub Client ID and Client Secret in Netlify:
+
+```text
+Project configuration -> Access & security -> OAuth -> Authentication Providers -> GitHub
+```
+
+With Netlify's OAuth provider, the current Decap `github` backend can stay simple; no separate OAuth proxy domain is needed. For local UI testing, Decap's local backend is enabled in `HTML/admin/config.yml`.
 
 ## Internal Tools
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hu" class="admin-checking">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fellépések | Admin előnézet</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    html.admin-checking body > *:not(#adminOnlyStatus) { display: none !important; }
+    body { font-family: 'Poppins', sans-serif; background-color: #ebdbc9; color: #1f1f1f; margin: 0; }
+    .navbar { align-items: end; }
+    .navbar .container { display: flex; justify-content: space-between; }
+    .navbar-nav { display: flex; gap: 2rem; }
+    .logo { height: 70px; width: auto; }
+    .page-hero { min-height: 44vh; background-image: linear-gradient(rgba(0,106,81,.58), rgba(0,106,81,.82)), url('mainbg.png'); background-size: cover; background-position: center; color: #ebdbc9; display: flex; align-items: center; padding: 5rem 1rem; }
+    .page-title { font-family: 'IM Fell DW Pica SC', serif; font-size: clamp(2.4rem, 6vw, 5rem); margin-bottom: 1rem; }
+    .page-lead { max-width: 780px; font-size: 1.1rem; line-height: 1.75; }
+    .content-section { padding: 4rem 1rem; }
+    .section-heading { font-family: 'IM Fell DW Pica SC', serif; color: #006a51; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; }
+    .info-card { height: 100%; background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+    .info-card h2, .info-card h3 { font-family: 'IM Fell DW Pica SC', serif; color: #006a51; }
+    .info-card p, .info-card li { line-height: 1.75; }
+    .admin-note { background: #fff3cd; color: #664d03; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+    .btn-custom { background-color: #006a51; color: #fff; border: 0; border-radius: 8px; padding: .8rem 1.4rem; }
+    .btn-custom:hover { background-color: #00513e; color: #fff; }
+    .footer { background-color: #006a51; color: white; }
+    .footer-icons img { filter: invert(1); width: 30px; height: 30px; }
+    @media (max-width: 991px) { .navbar-nav { gap: .5rem; padding-top: 1rem; } }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="logodudabalint3.png" alt="Kiss Bálint" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Kezdőlap</a></li>
+          <li class="nav-item"><a class="nav-link" href="galéria.html">Galéria</a></li>
+          <li class="nav-item"><a class="nav-link" href="hanganyagok.html">Hanganyagok</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="forum.html">Fórum</a></li>
+          <li class="nav-item"><a class="nav-link" href="oldal_3_kapcsolat.html">Kapcsolat</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Bejelentkezés</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Regisztráció</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HU</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Fellépések</h1>
+      <p class="page-lead">Admin előnézet: későbbi publikus oldal esküvőkhöz, megemlékezésekhez, kulturális és céges eseményekhez.</p>
+    </div>
+  </header>
+
+  <main class="content-section container">
+    <div class="admin-note">Ez az oldal még csak admin fiókkal látható, amíg a vállalkozási háttér nincs véglegesítve.</div>
+
+    <div class="row g-4">
+      <article class="col-md-6 col-lg-4">
+        <div class="info-card">
+          <h2>Esküvő</h2>
+          <p>Bevonulás, kivonulás, vendégfogadás vagy rövid ünnepi blokk. A duda erős hangja különösen jól működik szabadtéren és nagyobb terekben.</p>
+        </div>
+      </article>
+      <article class="col-md-6 col-lg-4">
+        <div class="info-card">
+          <h2>Megemlékezés</h2>
+          <p>Visszafogott, méltóságteljes dallamok temetésre, emlékünnepségre vagy koszorúzásra. Ilyenkor a rövid, pontosan időzített zene a legerősebb.</p>
+        </div>
+      </article>
+      <article class="col-md-6 col-lg-4">
+        <div class="info-card">
+          <h2>Rendezvény</h2>
+          <p>Kulturális programok, céges események, díjátadók és skót tematikájú estek nyitó vagy záró zenei elemeként.</p>
+        </div>
+      </article>
+    </div>
+
+    <section class="mt-5">
+      <h2 class="section-heading">Egyeztetendő részletek</h2>
+      <div class="info-card">
+        <ul>
+          <li>helyszín: kültér, beltér, teremméret, akusztika</li>
+          <li>pontos időzítés: bevonulás, kivonulás, megnyitó, zárás</li>
+          <li>műsorhossz: általában 5-15 perc vagy több rövid megszólalás</li>
+          <li>öltözet, dallamhangulat és eseményprotokoll</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-1">KISS BÁLINT SKÓTDUDÁS 2025</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/site-feedback.js"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script type="module" src="assets/js/admin-page-guard.js"></script>
+  <script type="module" src="assets/js/auth-nav.js"></script>
+</body>
+
+</html>
