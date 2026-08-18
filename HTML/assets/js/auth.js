@@ -5,6 +5,7 @@ const authForm = document.getElementById("authForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const signInButton = document.getElementById("signInButton");
+const resetPasswordButton = document.getElementById("resetPasswordButton");
 
 function getUsernameFromEmail(email) {
   return email ? email.split("@")[0] : "Felhasználó";
@@ -45,6 +46,11 @@ async function refreshSession() {
 }
 
 async function signIn() {
+  if (!isSupabaseConfigured) {
+    showConfigMessage(statusBox);
+    return;
+  }
+
   window.siteFeedback?.loading("Bejelentkezés folyamatban...");
 
   const { error } = await supabase.auth.signInWithPassword({
@@ -62,5 +68,38 @@ async function signIn() {
   window.siteFeedback?.success("Sikeres bejelentkezés.");
 }
 
+async function requestPasswordReset() {
+  if (!isSupabaseConfigured) {
+    showConfigMessage(statusBox);
+    return;
+  }
+
+  if (!emailInput.value.trim()) {
+    setStatus("Add meg az email címedet, és elküldjük az új jelszó beállításához szükséges linket.", "warning");
+    window.siteFeedback?.error("Add meg az email címedet.");
+    return;
+  }
+
+  window.siteFeedback?.loading("Jelszó-visszaállító email küldése...");
+
+  const { error } = await supabase.auth.resetPasswordForEmail(emailInput.value.trim(), {
+    redirectTo: `${window.location.origin}/reset-password.html`
+  });
+
+  if (error) {
+    setStatus(error.message, "danger");
+    window.siteFeedback?.error(error.message);
+    return;
+  }
+
+  setStatus("Ha ehhez az email címhez tartozik fiók, elküldtük az új jelszó beállító linket.", "success");
+  window.siteFeedback?.success("Jelszó-visszaállító email elküldve.");
+}
+
 signInButton?.addEventListener("click", signIn);
+resetPasswordButton?.addEventListener("click", requestPasswordReset);
+authForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  signIn();
+});
 refreshSession();
