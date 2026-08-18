@@ -365,11 +365,16 @@ function createProfileItem() {
 }
 
 function setLinkHidden(href, hidden) {
-  document.querySelectorAll(`.navbar-nav a[href="${href}"]`).forEach((link) => {
-    const item = link.closest(".nav-item");
-    if (item) {
+  document.querySelectorAll(".navbar-nav").forEach((navList) => {
+    navList.querySelectorAll(`:scope > .nav-item > a[href="${href}"]`).forEach((link) => {
+      const item = link.closest(".nav-item");
+      if (!item) {
+        return;
+      }
+
       item.hidden = hidden;
-    }
+      item.style.display = hidden ? "none" : "";
+    });
   });
 }
 
