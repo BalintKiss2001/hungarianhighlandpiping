@@ -107,6 +107,10 @@ async function submitWaitlist(event) {
   setSubmitting(false);
   setStatus("Köszönöm, felkerültél a várólistára. Emailben kereslek, amikor új hely nyílik.", "success");
   window.siteFeedback?.success("A jelentkezésedet rögzítettem.");
+  window.hhpTrackMetaEvent?.("Lead", {
+    content_name: "Skótduda oktatás várólista",
+    content_category: "waitlist"
+  });
   waitlistForm.reset();
   waitlistForm.classList.remove("was-validated");
 }
