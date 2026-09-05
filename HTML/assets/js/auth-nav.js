@@ -3,6 +3,12 @@ import { isSupabaseConfigured, supabase } from "./supabase-client.js";
 const ADMIN_EMAILS = (window.HHP_ADMIN_EMAILS || ["kissbalint12@gmail.com"])
   .map((email) => email.toLowerCase().trim());
 
+const LEARNING_LINKS = [
+  { href: "oktatoanyagok.html", label: "Oktatóanyagok" },
+  { href: "forum.html", label: "Fórum" },
+  { href: "varolista.html", label: "Várólista" }
+];
+
 function injectAuthNavStyles() {
   if (document.getElementById("authNavStyles")) {
     return;
@@ -89,6 +95,10 @@ function injectAuthNavStyles() {
       color: #ffffff;
     }
 
+    .auth-learning-item--active > .auth-account-button {
+      color: #ffffff;
+    }
+
     .auth-account-button::after {
       content: "";
       display: inline-block;
@@ -130,6 +140,11 @@ function injectAuthNavStyles() {
 
     .auth-admin-item {
       position: relative;
+    }
+
+    .auth-learning-item .auth-account-menu a.active {
+      background: #006a51;
+      color: #ffffff;
     }
 
     .auth-profile-button {
@@ -284,8 +299,7 @@ function normalizeNavOrder(navList) {
     "galéria.html",
     "hanganyagok.html",
     "blog.html",
-    "oktatoanyagok.html",
-    "forum.html",
+    "varolista.html",
     "oldal_3_kapcsolat.html",
     "admin/index.html",
     "login.html",
@@ -311,11 +325,29 @@ function normalizeNavOrder(navList) {
 
 function getVisibleAuthStart(navList) {
   return [
+    navList.querySelector(".auth-learning-item"),
     navList.querySelector(".auth-account-item"),
     findItemByHref(navList, "login.html"),
     findItemByHref(navList, "register.html"),
     findLanguageItem(navList)
   ].find((item) => item && !item.hidden) || null;
+}
+
+function createLearningItem() {
+  const currentPage = decodeURIComponent(window.location.pathname.split("/").pop() || "index.html");
+  const isLearningPage = LEARNING_LINKS.some((link) => link.href === currentPage);
+  const item = document.createElement("li");
+  item.className = `nav-item auth-account-item auth-learning-item${isLearningPage ? " auth-learning-item--active" : ""}`;
+  item.innerHTML = `
+    <button class="auth-account-button" type="button" aria-label="Tanulás menü" aria-expanded="false">Tanulás</button>
+    <div class="auth-account-menu" hidden>
+      ${LEARNING_LINKS.map((link) => `
+        <a href="${link.href}"${currentPage === link.href ? ' class="active"' : ""}>${link.label}</a>
+      `).join("")}
+    </div>
+  `;
+
+  return item;
 }
 
 function createAccountItem() {
@@ -378,6 +410,15 @@ function setLinkHidden(href, hidden) {
   });
 }
 
+function removeLearningLinks(navList) {
+  LEARNING_LINKS.forEach(({ href }) => {
+    const item = findItemByHref(navList, href);
+    if (item && !item.classList.contains("auth-learning-item")) {
+      item.remove();
+    }
+  });
+}
+
 function renderActions(container, user) {
   container.innerHTML = "";
 
@@ -421,11 +462,22 @@ async function initAuthNav() {
 
   injectAuthNavStyles();
   normalizeNavOrder(navList);
+  removeLearningLinks(navList);
 
+  const learningItem = createLearningItem();
   const accountItem = createAccountItem();
   const adminItem = createAdminItem();
   const profileItem = createProfileItem();
+  const blogItem = findItemByHref(navList, "blog.html");
   const languageItem = findLanguageItem(navList);
+
+  if (blogItem) {
+    blogItem.insertAdjacentElement("afterend", learningItem);
+  } else if (languageItem) {
+    languageItem.insertAdjacentElement("beforebegin", learningItem);
+  } else {
+    navList.appendChild(learningItem);
+  }
 
   if (languageItem) {
     languageItem.insertAdjacentElement("beforebegin", adminItem);
@@ -437,6 +489,8 @@ async function initAuthNav() {
     navList.appendChild(profileItem);
   }
 
+  const learningButton = learningItem.querySelector(".auth-account-button");
+  const learningMenu = learningItem.querySelector(".auth-account-menu");
   const accountButton = accountItem.querySelector(".auth-account-button");
   const accountMenu = accountItem.querySelector(".auth-account-menu");
   const adminButton = adminItem.querySelector(".auth-account-button");
@@ -457,8 +511,10 @@ async function initAuthNav() {
     adminItem.hidden = !isAdminUser(user);
     accountItem.hidden = Boolean(user);
     profileItem.hidden = !user;
+    learningMenu.hidden = true;
     accountMenu.hidden = true;
     adminMenu.hidden = true;
+    learningButton.setAttribute("aria-expanded", "false");
     accountButton.setAttribute("aria-expanded", "false");
     adminButton.setAttribute("aria-expanded", "false");
     emailValue.textContent = user ? getUsernameFromEmail(user.email) : "Nem vagy bejelentkezve.";
@@ -472,10 +528,24 @@ async function initAuthNav() {
     authStart?.classList.add("nav-auth-start");
   }
 
+  learningButton.addEventListener("click", () => {
+    const isOpen = !learningMenu.hidden;
+    learningMenu.hidden = isOpen;
+    learningButton.setAttribute("aria-expanded", String(!isOpen));
+    accountMenu.hidden = true;
+    accountButton.setAttribute("aria-expanded", "false");
+    adminMenu.hidden = true;
+    adminButton.setAttribute("aria-expanded", "false");
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+  });
+
   accountButton.addEventListener("click", () => {
     const isOpen = !accountMenu.hidden;
     accountMenu.hidden = isOpen;
     accountButton.setAttribute("aria-expanded", String(!isOpen));
+    learningMenu.hidden = true;
+    learningButton.setAttribute("aria-expanded", "false");
     adminMenu.hidden = true;
     adminButton.setAttribute("aria-expanded", "false");
     menu.hidden = true;
@@ -486,6 +556,8 @@ async function initAuthNav() {
     const isOpen = !adminMenu.hidden;
     adminMenu.hidden = isOpen;
     adminButton.setAttribute("aria-expanded", String(!isOpen));
+    learningMenu.hidden = true;
+    learningButton.setAttribute("aria-expanded", "false");
     accountMenu.hidden = true;
     accountButton.setAttribute("aria-expanded", "false");
     menu.hidden = true;
@@ -496,6 +568,8 @@ async function initAuthNav() {
     const isOpen = !menu.hidden;
     menu.hidden = isOpen;
     button.setAttribute("aria-expanded", String(!isOpen));
+    learningMenu.hidden = true;
+    learningButton.setAttribute("aria-expanded", "false");
     accountMenu.hidden = true;
     accountButton.setAttribute("aria-expanded", "false");
     adminMenu.hidden = true;
@@ -503,7 +577,9 @@ async function initAuthNav() {
   });
 
   document.addEventListener("click", (event) => {
-    if (!profileItem.contains(event.target) && !accountItem.contains(event.target) && !adminItem.contains(event.target)) {
+    if (!profileItem.contains(event.target) && !accountItem.contains(event.target) && !adminItem.contains(event.target) && !learningItem.contains(event.target)) {
+      learningMenu.hidden = true;
+      learningButton.setAttribute("aria-expanded", "false");
       accountMenu.hidden = true;
       accountButton.setAttribute("aria-expanded", "false");
       adminMenu.hidden = true;

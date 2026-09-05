@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /reset-password.html
+Disallow: /kapcsolat_test.html
+Disallow: /booking.html
+
+Sitemap: https://www.hungarianbagpiper.hu/sitemap.xml
