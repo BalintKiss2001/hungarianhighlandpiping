@@ -92,6 +92,7 @@
       position: relative;
       z-index: 2;
       height: 100%;
+      padding-top: clamp(3rem, 8vh, 5.5rem);
     }
 
     .hero-title {
@@ -161,11 +162,16 @@
     .bio-photo-frame {
       display: inline-block;
       max-width: 100%;
-      border: 36px solid transparent;
-      border-image: url('img/celtic_frame_2.png') 95 round;
-      background-color: rgba(235, 219, 201, 0.55);
+      position: relative;
+      border: none;
+      border-radius: 8px;
+      background:
+        linear-gradient(rgba(0, 70, 54, 0.1), rgba(0, 70, 54, 0.1)),
+        url('tartan_custom.png');
+      background-size: auto, cover;
       line-height: 0;
-      padding: 10px;
+      padding: 16px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
     }
 
     .bio-photo-frame img {
@@ -174,7 +180,10 @@
       max-height: 420px;
       height: auto;
       width: auto;
-      object-fit: contain;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 8px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(0, 106, 81, 0.14);
     }
 
     .home-blog-section {
@@ -351,7 +360,7 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%; overflow: hidden;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="background-color: #006a51 !important; margin: 0; width: 100%; overflow: hidden;">
     <div class="container">
       <a class="navbar-brand" href="">
         <img src="logodudabalint3.png" alt="Kiss Bálint" height="70">
@@ -377,7 +386,7 @@
   <!-- Hero Section -->
   <section class="hero-section d-flex align-items-center justify-content-center text-center">
     <!--<div class="hero-overlay"></div> -->
-    <div class="container hero-content d-flex flex-column align-items-start justify-content-center">
+    <div class="container hero-content d-flex flex-column align-items-start justify-content-start">
       <h1 class="hero-title text-start">KISS BÁLINT<br />SKÓTDUDÁS</h1>
       <a href="oldal_3_kapcsolat.html" class="btn btn-custom btn-lg shadow">Kapcsolat</a>
     </div>

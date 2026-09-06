@@ -55,49 +55,219 @@
       background-image: url('tartan_custom.png');
       background-size: cover;
       background-position: center;
-      min-height: 100vh;
+      min-height: calc(100vh - 96px);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       position: relative;
-      text-align: center;
-      padding: 4rem 1rem;
+      padding: 5rem 1rem;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0, 56, 44, 0.88), rgba(0, 106, 81, 0.62)),
+        rgba(0, 0, 0, 0.15);
+      z-index: 0;
+    }
+
+    .contact-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .contact-intro,
+    .contact-panel {
+      border: 1px solid rgba(235, 219, 201, 0.24);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.11);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-intro {
+      color: #ffffff;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .contact-kicker {
+      color: #ebdbc9;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
     }
 
     .section-title {
       font-family: 'IM Fell DW Pica SC', serif;
       font-size: clamp(2rem, 5vw, 4rem);
-      color: #ebdbc9;
-      margin-bottom: 3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .contact-lead {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-detail-icon {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 38px;
+      border-radius: 50%;
+      background: #ebdbc9;
+      color: #006a51;
+      font-weight: 700;
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-panel {
+      padding: clamp(1.25rem, 3vw, 2rem);
+      background: rgba(235, 219, 201, 0.94);
+    }
+
+    .contact-panel-title {
+      color: #006a51;
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-panel-text {
+      color: #3c3934;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    #buttonGroup {
+      width: 100%;
     }
 
     .contact-button {
-      background-color: #ebdbc9;
-      color: #006a51;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      margin: 1.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      background-color: #006a51;
+      color: #ffffff;
+      border: 1px solid #006a51;
+      padding: 0.95rem 1.35rem;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
       /* nagyobb távolság a gombok között */
       width: 100%;
-      max-width: 300px;
+      min-height: 56px;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 26px rgba(0, 106, 81, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .contact-button:hover,
+    .contact-button:focus {
+      background-color: #004f3d;
+      border-color: #004f3d;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 79, 61, 0.28);
+    }
+
+    .contact-button--secondary {
+      background-color: #ffffff;
+      color: #006a51;
+      border-color: rgba(0, 106, 81, 0.18);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-button--secondary:hover,
+    .contact-button--secondary:focus {
+      background-color: #f8f3ed;
+      color: #004f3d;
+      border-color: rgba(0, 106, 81, 0.35);
+    }
+
+    .contact-form {
+      max-width: none !important;
+      width: 100%;
+      margin: 0 !important;
+      padding-top: 1.25rem;
+    }
+
+    .contact-form .form-control {
+      border: 1px solid rgba(0, 106, 81, 0.18);
+      border-radius: 8px;
+      padding: 0.95rem 1rem;
+      color: #26231f;
+      background-color: rgba(255, 255, 255, 0.88);
+      box-shadow: none;
+    }
+
+    .contact-form .mb-3 {
+      margin-bottom: 1.1rem !important;
+    }
+
+    .contact-form .form-control:focus {
+      border-color: #006a51;
+      box-shadow: 0 0 0 0.2rem rgba(0, 106, 81, 0.18);
     }
 
     .btn-outline-secondary {
-      background-color: #ebdbc9;
+      background-color: transparent;
       color: #006a51;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      margin: 1.5rem 0;
+      border: 1px solid rgba(0, 106, 81, 0.35);
+      padding: 0.95rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
       /* nagyobb távolság a gombok között */
-      width: 25%;
-      max-width: 300px;
+      min-height: 56px;
+      min-width: 120px;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-outline-secondary:hover,
+    .btn-outline-secondary:focus {
+      background-color: rgba(0, 106, 81, 0.08);
+      color: #004f3d;
+      border-color: #006a51;
     }
 
     .footer {
@@ -111,13 +281,39 @@
       width: 30px;
       height: 30px;
     }
+
+    @media (max-width: 900px) {
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-section {
+        padding: 3rem 1rem;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .contact-intro,
+      .contact-panel {
+        padding: 1.25rem;
+      }
+
+      .contact-form .d-flex {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .btn-outline-secondary {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%; overflow: hidden;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="background-color: #006a51 !important; margin: 0; width: 100%; overflow: hidden;">
     <div class="container">
       <a class="navbar-brand" href="">
         <img src="logodudabalint3.png" alt="Kiss Bálint" height="70">
@@ -141,20 +337,51 @@
   </nav>
 
   <section class="contact-section">
-    <h1 class="section-title">Kapcsolat</h1>
+    <div class="contact-shell">
+      <div class="contact-intro">
+        <div class="contact-kicker">Kapcsolatfelv&eacute;tel</div>
+        <h1 class="section-title">Kapcsolat</h1>
+        <p class="contact-lead">
+          Fell&eacute;p&eacute;s, tanul&aacute;s vagy egy&uuml;ttm&ucirc;k&ouml;d&eacute;s kapcs&aacute;n &iacute;rj nyugodtan.
+          A legfontosabb r&eacute;szletekkel gyorsan tov&aacute;bb tudunk l&eacute;pni az egyeztet&eacute;sben.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <span class="contact-detail-icon">1</span>
+            <div>
+              <strong>R&ouml;vid le&iacute;r&aacute;s</strong>
+              Milyen alkalomr&oacute;l, k&eacute;rd&eacute;sr&otilde;l vagy tanul&aacute;si c&eacute;lr&oacute;l van sz&oacute;?
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-icon">2</span>
+            <div>
+              <strong>Id&otilde;pont &eacute;s helysz&iacute;n</strong>
+              Fell&eacute;p&eacute;sn&eacute;l &eacute;rdemes megadni az előretervezés érdekében.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-panel">
+        <h2 class="contact-panel-title">Miben seg&iacute;thetek?</h2>
+        <p class="contact-panel-text">
+          V&aacute;lassz k&ouml;zvetlen csatorn&aacute;t, vagy nyisd meg az &uuml;zenetk&uuml;ld&otilde; &ucirc;rlapot.
+        </p>
 
     <!-- GOMBOK -->
-    <div id="buttonGroup" class="d-flex flex-column align-items-center gap-3 mb-4">
-      <button class="contact-button" id="emailBtn">E-mail</button>
+    <div id="buttonGroup" class="d-flex flex-column align-items-stretch gap-3">
+      <button class="contact-button" id="emailBtn" type="button">E-mail &uuml;zenet</button>
       <a href="https://www.facebook.com/profile.php?id=61576771014395" target="_blank"
-        class="contact-button">Facebook</a>
+        class="contact-button contact-button--secondary" rel="noopener noreferrer">Facebook oldal</a>
       <!--<a href="https://www.instagram.com/" target="_blank" class="contact-button">Instagram</a>-->
     </div>
 
 
     <!-- ŰRLAP -->
-    <form id="emailForm" action="https://formspree.io/f/movdzdbz" method="POST"
-      style="display: none; max-width: 500px; width: 100%; margin: auto;">
+    <form id="emailForm" class="contact-form" action="https://formspree.io/f/movdzdbz" method="POST"
+      style="display: none;">
       <div class="mb-3">
         <input type="email" name="email" class="form-control" placeholder="Email cím" required />
       </div>
@@ -164,11 +391,13 @@
       <div class="mb-3">
         <textarea name="message" class="form-control" rows="5" placeholder="Üzenet" required></textarea>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between gap-3">
         <button type="button" id="backBtn" class="btn btn-outline-secondary">Vissza</button>
         <button type="submit" class="contact-button">Küldés</button>
       </div>
     </form>
+      </div>
+    </div>
   </section>
 
 

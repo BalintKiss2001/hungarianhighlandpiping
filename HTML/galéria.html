@@ -112,13 +112,88 @@
       transform: scale(1.05);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
+
+    .glightbox-clean .goverlay {
+      background: rgba(0, 34, 28, 0.9);
+      backdrop-filter: blur(10px);
+    }
+
+    .glightbox-clean .gcontainer {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glightbox-clean .gslide-media {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+      background: #111111;
+    }
+
+    .glightbox-clean .gslide-image img {
+      border-radius: 8px;
+    }
+
+    .glightbox-clean .gslide-description {
+      max-width: min(920px, calc(100vw - 2rem));
+      margin: 0.75rem auto 0;
+      border-radius: 8px;
+      background: rgba(235, 219, 201, 0.96);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.22);
+    }
+
+    .glightbox-clean .gslide-title {
+      color: #006a51;
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-size: clamp(1.25rem, 3vw, 1.8rem);
+      line-height: 1.15;
+      margin: 0;
+      padding: 0.95rem 1.1rem;
+    }
+
+    .glightbox-clean .gclose,
+    .glightbox-clean .gnext,
+    .glightbox-clean .gprev {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background-color: rgba(235, 219, 201, 0.95);
+      color: #006a51;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .glightbox-clean .gclose:hover,
+    .glightbox-clean .gnext:hover,
+    .glightbox-clean .gprev:hover {
+      background-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .glightbox-clean .gclose svg,
+    .glightbox-clean .gnext svg,
+    .glightbox-clean .gprev svg {
+      fill: currentColor;
+    }
+
+    @media (max-width: 575px) {
+      .glightbox-clean .gclose,
+      .glightbox-clean .gnext,
+      .glightbox-clean .gprev {
+        width: 42px;
+        height: 42px;
+      }
+
+      .glightbox-clean .gslide-description {
+        margin-top: 0.5rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="--bs-bg-opacity: .76; border-radius: 0 0 18px 18px; margin: 0; width: 100%; overflow: hidden;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow" style="background-color: #006a51 !important; margin: 0; width: 100%; overflow: hidden;">
     <div class="container">
       <a class="navbar-brand" href="">
         <img src="logodudabalint3.png" alt="Kiss Bálint" class="logo">
@@ -146,6 +221,16 @@
     <div class="row">
 
       <!-- YouTube videó -->
+      <div class="col-md-6 col-lg-4">
+        <div class="gallery-item">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/auSAne3hpyw" title="John Mackenzie's Fancy Hornpipe - el&otilde;adja: Kiss B&aacute;lint"
+              allowfullscreen></iframe>
+          </div>
+          <div class="gallery-caption">John Mackenzie's Fancy (2/4 Hornpipe) - el&otilde;adja: Kiss B&aacute;lint</div>
+        </div>
+      </div>
+
       <div class="col-md-6 col-lg-4">
         <div class="gallery-item">
           <div class="ratio ratio-16x9">
@@ -224,6 +309,10 @@
   <script>
     const lightbox = GLightbox({
       selector: '.glightbox',
+      skin: 'clean',
+      touchNavigation: true,
+      loop: true,
+      draggable: true,
       openEffect: 'zoom',
       closeEffect: 'fade',
       plyr: {
